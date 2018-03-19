@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-# -*- coding:UTF-8 -*-
-
 
 """VoxelNet config system.
 """
@@ -18,11 +16,12 @@ __C = edict()
 cfg = __C
 
 # for dataset dir
-__C.DATA_DIR = '/media/hdc/KITTI/for_voxelnet/cropped_dataset'
-__C.CALIB_DIR = '/media/hdc/KITTI/calib/data_object_calib/training/calib'
+#__C.DATA_DIR = '/home/erik/Code/sandbox/voxelnet/data/object'
+__C.DATA_DIR = '/home/erik/Code/sandbox/voxelnet/data/rcv_test'
+__C.CALIB_DIR = '/media/erik/3tb/KITTY_DATA/3d_object_data/training/calib'
 
 # for gpu allocation
-__C.GPU_AVAILABLE = '0,1'
+__C.GPU_AVAILABLE = '0'
 __C.GPU_USE_COUNT = len(__C.GPU_AVAILABLE.split(','))
 __C.GPU_MEMORY_FRACTION = 1
 

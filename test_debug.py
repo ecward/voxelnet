@@ -29,12 +29,18 @@ if __name__ == '__main__':
     dataset_dir = cfg.DATA_DIR
     val_dir = os.path.join(cfg.DATA_DIR, 'validation')
     save_model_dir = os.path.join('./save_model', args.tag)
+    log_dir = './predict_log'
+
     
     # create output folder
     os.makedirs(args.output_path, exist_ok=True)
     os.makedirs(os.path.join(args.output_path, 'data'), exist_ok=True)
+    os.makedirs(log_dir,exist_ok=True)
     if args.vis:
+        print("Will visualize!")
         os.makedirs(os.path.join(args.output_path, 'vis'), exist_ok=True)
+    else:
+        print("Will NOT visualize!")
 
 
     with tf.Graph().as_default():
@@ -52,6 +58,8 @@ if __name__ == '__main__':
         )
 
         with tf.Session(config=config) as sess:
+            #is_train -> if it is False, higher runtime and crashes..
+            #When the model is trained, a few things should be fixed.. (e.g. batch-normalization)
             model = RPN3D(
                 cls=cfg.DETECT_OBJ,
                 single_batch_size=args.single_batch_size,
@@ -60,18 +68,29 @@ if __name__ == '__main__':
             )
             if tf.train.get_checkpoint_state(save_model_dir):
                 print("Reading model parameters from %s" % save_model_dir)
-                model.saver.restore(
-                    sess, tf.train.latest_checkpoint(save_model_dir))
+                print("sess = ",sess)
+                model.saver.restore(  sess, tf.train.latest_checkpoint(save_model_dir))
+                
             else:
                 print("No saved model!","save_model_dir=",save_model_dir)
-            
-            
+
+            #let's show some stuff in tensorboard
+            summary_writer = tf.summary.FileWriter(log_dir,sess.graph)
+                
+
+            print("single_batch_size = ",args.single_batch_size,"GPU_USE_COUNT=",cfg.GPU_USE_COUNT)
             for batch in iterate_data(val_dir, shuffle=False, aug=False, is_testset=False, batch_size=args.single_batch_size * cfg.GPU_USE_COUNT, multi_gpu_sum=cfg.GPU_USE_COUNT):
 
                 if args.vis:
+                    t0 = time.time()
                     tags, results, front_images, bird_views, heatmaps = model.predict_step(sess, batch, summary=False, vis=True)
+                    print("predict runtime (with visualization) = ",time.time()-t0,"s")
                 else:
-                    tags, results = model.predict_step(sess, batch, summary=False, vis=False)
+                    #Let's do it a few times to get a better idea of the runtime...
+                    for step in range(10):
+                        t0 = time.time()
+                        tags, results = model.predict_step(sess, batch, summary=False, vis=False)
+                        print("predict runtime = ",time.time()-t0,"s")
                 
                 # ret: A, B
                 # A: (N) tag
@@ -92,6 +111,13 @@ if __name__ == '__main__':
                         cv2.imwrite( front_img_path, front_image )
                         cv2.imwrite( bird_view_path, bird_view )
                         cv2.imwrite( heatmap_path, heatmap )
+
+            #Wait for user to quit...
+            input("Press Enter to quit...")
+        #end with tf.Session
+
+
+                
 
 
 

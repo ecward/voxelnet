@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding:UTF-8 -*-
 
 import cv2
 import numpy as np
@@ -17,12 +16,14 @@ from utils.preprocess import process_pointcloud
 
 
 def iterate_data(data_dir, shuffle=False, aug=False, is_testset=False, batch_size=1, multi_gpu_sum=1):
+
     f_rgb = glob.glob(os.path.join(data_dir, 'image_2', '*.png'))
     f_lidar = glob.glob(os.path.join(data_dir, 'velodyne', '*.bin'))
     f_label = glob.glob(os.path.join(data_dir, 'label_2', '*.txt'))
     f_rgb.sort()
     f_lidar.sort()
     f_label.sort()
+    print("Prepare data for network, got ",len(f_rgb),len(f_lidar),len(f_label)," rgb, lidar, label files from dir:",data_dir)
     
     data_tag = [name.split('/')[-1].split('.')[-2] for name in f_rgb]
 
@@ -35,7 +36,7 @@ def iterate_data(data_dir, shuffle=False, aug=False, is_testset=False, batch_siz
         np.random.shuffle(indices)
 
     num_batches = int(math.floor( nums / float(batch_size) ))
-
+    print("We get ",num_batches," batches of batch size ",batch_size)
 
     for batch_idx in range(num_batches):
         start_idx = batch_idx * batch_size

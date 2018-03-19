@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding:UTF-8 -*-
 
 # File Name : preprocess.py
 # Purpose :
@@ -33,8 +32,9 @@ def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):
         lidar_coord = np.array([0, 20, 3], dtype=np.float32)
         max_point_number = 45
 
-        np.random.shuffle(point_cloud)
+    np.random.shuffle(point_cloud)
 
+    #Why is this done?
     shifted_coord = point_cloud[:, :3] + lidar_coord
     # reverse the point cloud coordinate (X, Y, Z) -> (Z, Y, X)
     voxel_index = np.floor(
@@ -76,6 +76,7 @@ def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):
             feature_buffer[index, number, :4] = point
             number_buffer[index] += 1
 
+    #Add mean to it
     feature_buffer[:, :, -3:] = feature_buffer[:, :, :3] - \
         feature_buffer[:, :, :3].sum(axis=1, keepdims=True)/number_buffer.reshape(K, 1, 1)
 
