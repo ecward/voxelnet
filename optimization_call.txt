@@ -1,0 +1,55 @@
+/home/erik/Libs/tensorflow/bazel-bin/tensorflow/tools/graph_transforms/transform_graph --in_graph=fr00zen.pb --out_graph=fr00zen_opt.pb --inputs='gpu_0/feature,gpu_0/coordinate' --outputs='concat_104,concat_105' --transforms='strip_unused_nodes remove_nodes(op=Identity, op=CheckNumerics) fold_constants(ignore_errors=true) fold_batch_norms fold_old_batch_norms quantize_weights quantize_nodes'
+
+This fails to be executed...
+
+Let's try one at a time...
+
+1,2,3,4,5 transform OK..
+
+/home/erik/Libs/tensorflow/bazel-bin/tensorflow/tools/graph_transforms/transform_graph --in_graph=fr00zen.pb --out_graph=fr00zen_opt.pb --inputs='gpu_0/feature,gpu_0/coordinate' --outputs='concat_104,concat_105' --transforms='strip_unused_nodes remove_nodes(op=Identity, op=CheckNumerics) fold_constants(ignore_errors=true) fold_batch_norms fold_old_batch_norms'
+
+#quantize weights actually give worse runtime...
+/home/erik/Libs/tensorflow/bazel-bin/tensorflow/tools/graph_transforms/transform_graph --in_graph=fr00zen.pb --out_graph=fr00zen_opt.pb --inputs='gpu_0/feature,gpu_0/coordinate' --outputs='concat_104,concat_105' --transforms='strip_unused_nodes remove_nodes(op=Identity, op=CheckNumerics) fold_constants(ignore_errors=true) fold_batch_norms fold_old_batch_norms quantize_weights'
+
+
+#recomended by docs...
+
+/home/erik/Libs/tensorflow/bazel-bin/tensorflow/tools/graph_transforms/transform_graph \
+--in_graph=fr00zen.pb \
+--out_graph=fr00zen_opt.pb \
+--inputs='gpu_0/feature,gpu_0/coordinate' \
+--outputs='concat_104,concat_105' \
+--transforms='
+  strip_unused_nodes(type=float, shape="1,299,299,3")
+  remove_nodes(op=Identity, op=CheckNumerics)
+  fold_constants(ignore_errors=true)
+  fold_batch_norms
+  fold_old_batch_norms'
+
+
+#profile...
+#Okay, variable shape inputs (?,35,7) and (?,4)... let's try to figure out these sizes..
+#For my test data it is: 1888
+
+#Why is coordinate int64 ???? is it really needed????
+
+/home/erik/Libs/tensorflow/bazel-bin/tensorflow/tools/benchmark/benchmark_model \
+--graph=fr00zen.pb \
+--input_layer='gpu_0/feature:0,gpu_0/coordinate:0' \
+--input_layer_shape='1888,20,7:1888,4' \
+--input_layer_type='float,int64' \
+--output_layer="concat_104,concat_105" \
+--show_memory=true --show_summary=true --show_flops=true
+
+
+#Let's try quantize....
+/home/erik/Libs/tensorflow/bazel-bin/tensorflow/tools/graph_transforms/transform_graph \
+  --in_graph=fr00zen.pb \
+  --out_graph=quantized_graph.pb \
+  --inputs='gpu_0/feature,gpu_0/coordinate' \
+  --outputs='concat_104,concat_105' \
+  --transforms='add_default_attributes strip_unused_nodes(type=float, shape="1,299,299,3")
+    remove_nodes(op=Identity, op=CheckNumerics) fold_constants(ignore_errors=true)
+    fold_batch_norms fold_old_batch_norms quantize_weights quantize_nodes(fallback_min=-10, fallback_max=10)
+    strip_unused_nodes sort_by_execution_order'
+

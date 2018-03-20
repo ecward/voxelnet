@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding:UTF-8 -*-
 
 
 import tensorflow as tf
@@ -95,6 +94,7 @@ class MiddleAndRPN:
             # Regression(residual) map, scale = [None, 200/100, 176/120, 14]
             r_map = ConvMD(2, 768, 14, 1, (1, 1), (0, 0),
                            temp_conv, training=self.training, activation=False, name='conv21')
+
             # softmax output for positive anchor and negative anchor, scale = [None, 200/100, 176/120, 1]
             self.p_pos = tf.sigmoid(p_map)
             #self.p_pos = tf.nn.softmax(p_map, dim=3)
@@ -128,7 +128,7 @@ def smooth_l1(deltas, targets, sigma=3.0):
     smooth_l1_add = tf.multiply(smooth_l1_option1, smooth_l1_signs) + \
         tf.multiply(smooth_l1_option2, 1 - smooth_l1_signs)
     smooth_l1 = smooth_l1_add
-
+    
     return smooth_l1
 
 
@@ -146,11 +146,14 @@ def ConvMD(M, Cin, Cout, k, s, p, input, training=True, activation=True, name='c
             pad = tf.pad(input, paddings, "CONSTANT")
             temp_conv = tf.layers.conv3d(
                 pad, Cout, k, strides=s, padding="valid", reuse=tf.AUTO_REUSE, name=scope)
+
         temp_conv = tf.layers.batch_normalization(
             temp_conv, axis=-1, fused=True, training=training, reuse=tf.AUTO_REUSE, name=scope)
         if activation:
             return tf.nn.relu(temp_conv)
         else:
+            if name=='conv21':                
+                print("name used for batch_normalization = ",scope)
             return temp_conv
 
 def Deconv2D(Cin, Cout, k, s, p, input, training=True, name='deconv'):

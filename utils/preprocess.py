@@ -14,7 +14,9 @@ from config import cfg
 
 data_dir = 'velodyne'
 
-def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):
+def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ, prune_voxels=False):
+    #Reduce the number of voxels that are input to network....
+    
     # Input:
     #   (N, 4)
     # Output:
@@ -24,7 +26,8 @@ def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):
         voxel_size = np.array([0.4, 0.2, 0.2], dtype=np.float32)
         grid_size = np.array([10, 400, 352], dtype=np.int64)
         lidar_coord = np.array([0, 40, 3], dtype=np.float32)
-        max_point_number = 35
+        #max_point_number = 35
+        max_point_number = 20 #Made this smaller 
     else:
         scene_size = np.array([4, 40, 48], dtype=np.float32)
         voxel_size = np.array([0.4, 0.2, 0.2], dtype=np.float32)
@@ -53,9 +56,23 @@ def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):
     voxel_index = voxel_index[bound_box]
 
     # [K, 3] coordinate buffer as described in the paper
-    coordinate_buffer = np.unique(voxel_index, axis=0)
+    coordinate_buffer,counts = np.unique(voxel_index, axis=0, return_counts=True)
+
+    print("voxel_index = ",np.shape(voxel_index))
+    print(voxel_index)
+    print("raw coordinate_buffer",np.shape(coordinate_buffer))
+    print(coordinate_buffer)
+    print("counts",np.shape(counts))
+    print(counts)
+    print("min_counts = ",np.min(counts)," max_counts = ",np.max(counts)," mean = ",np.mean(counts))
+
+    if prune_voxels:
+        #We should remove any voxel that has too few pnts!
+        #min 3 points...
+        coordinate_buffer = coordinate_buffer[counts>=2]
 
     K = len(coordinate_buffer)
+    print("K = ",K)
     T = max_point_number
 
     # [K, 1] store number of points in each voxel grid
@@ -69,12 +86,16 @@ def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ):
     for i in range(K):
         index_buffer[tuple(coordinate_buffer[i])] = i
 
+
     for voxel, point in zip(voxel_index, point_cloud):
-        index = index_buffer[tuple(voxel)]
-        number = number_buffer[index]
-        if number < T:
-            feature_buffer[index, number, :4] = point
-            number_buffer[index] += 1
+        if tuple(voxel) in index_buffer:
+            index = index_buffer[tuple(voxel)]
+            number = number_buffer[index]
+            if number < T:
+                feature_buffer[index, number, :4] = point
+                number_buffer[index] += 1
+
+        
 
     #Add mean to it
     feature_buffer[:, :, -3:] = feature_buffer[:, :, :3] - \

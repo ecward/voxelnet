@@ -1,0 +1,10 @@
+__pycache__/*
+model/__pycache__/*
+notebooks/.ipynb_checkpoints/*
+build/*
+*~
+utils/__pycache__/*
+*so
+data/object/*
+data/rcv_test/*
+predictions/*

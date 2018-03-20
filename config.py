@@ -34,7 +34,8 @@ if __C.DETECT_OBJ == 'Car':
     __C.X_MAX = 70.4
     __C.VOXEL_X_SIZE = 0.2
     __C.VOXEL_Y_SIZE = 0.2
-    __C.VOXEL_POINT_COUNT = 35
+#    __C.VOXEL_POINT_COUNT = 35
+    __C.VOXEL_POINT_COUNT = 20
     __C.INPUT_WIDTH = int((__C.X_MAX - __C.X_MIN) / __C.VOXEL_X_SIZE)
     __C.INPUT_HEIGHT = int((__C.Y_MAX - __C.Y_MIN) / __C.VOXEL_Y_SIZE)
     __C.FEATURE_RATIO = 2

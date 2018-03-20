@@ -1,0 +1,702 @@
+2018-03-20 14:33:03.648940: I tensorflow/tools/benchmark/benchmark_model.cc:447] Graph: [fr00zen.pb]
+2018-03-20 14:33:03.649032: I tensorflow/tools/benchmark/benchmark_model.cc:448] Input layers: [gpu_0/feature:0,gpu_0/coordinate:0]
+2018-03-20 14:33:03.649046: I tensorflow/tools/benchmark/benchmark_model.cc:449] Input shapes: [1888,20,7:1888,4]
+2018-03-20 14:33:03.649054: I tensorflow/tools/benchmark/benchmark_model.cc:450] Input types: [float,int64]
+2018-03-20 14:33:03.649061: I tensorflow/tools/benchmark/benchmark_model.cc:451] Output layers: [concat_104,concat_105]
+2018-03-20 14:33:03.649074: I tensorflow/tools/benchmark/benchmark_model.cc:452] Num runs: [1000]
+2018-03-20 14:33:03.649082: I tensorflow/tools/benchmark/benchmark_model.cc:453] Inter-inference delay (seconds): [-1.0]
+2018-03-20 14:33:03.649089: I tensorflow/tools/benchmark/benchmark_model.cc:454] Inter-benchmark delay (seconds): [-1.0]
+2018-03-20 14:33:03.649097: I tensorflow/tools/benchmark/benchmark_model.cc:456] Num threads: [-1]
+2018-03-20 14:33:03.649104: I tensorflow/tools/benchmark/benchmark_model.cc:457] Benchmark name: []
+2018-03-20 14:33:03.649111: I tensorflow/tools/benchmark/benchmark_model.cc:458] Output prefix: []
+2018-03-20 14:33:03.649118: I tensorflow/tools/benchmark/benchmark_model.cc:459] Show sizes: [0]
+2018-03-20 14:33:03.649125: I tensorflow/tools/benchmark/benchmark_model.cc:460] Warmup runs: [1]
+2018-03-20 14:33:03.649133: I tensorflow/tools/benchmark/benchmark_model.cc:54] Loading TensorFlow.
+2018-03-20 14:33:03.649143: I tensorflow/tools/benchmark/benchmark_model.cc:61] Got config, 0 devices
+2018-03-20 14:33:03.649223: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-03-20 14:33:03.971879: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1344] Found device 0 with properties: 
+name: GeForce GTX 970 major: 5 minor: 2 memoryClockRate(GHz): 1.253
+pciBusID: 0000:06:00.0
+totalMemory: 3.93GiB freeMemory: 3.40GiB
+2018-03-20 14:33:03.971935: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1423] Adding visible gpu devices: 0
+2018-03-20 14:33:04.329699: I tensorflow/core/common_runtime/gpu/gpu_device.cc:911] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-03-20 14:33:04.329738: I tensorflow/core/common_runtime/gpu/gpu_device.cc:917]      0 
+2018-03-20 14:33:04.329745: I tensorflow/core/common_runtime/gpu/gpu_device.cc:930] 0:   N 
+2018-03-20 14:33:04.329924: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1041] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 3127 MB memory) -> physical GPU (device: 0, name: GeForce GTX 970, pci bus id: 0000:06:00.0, compute capability: 5.2)
+2018-03-20 14:33:04.400287: I tensorflow/tools/benchmark/benchmark_model.cc:472] Initialized session in 0.75114s
+2018-03-20 14:33:04.400338: I tensorflow/tools/benchmark/benchmark_model.cc:312] Running benchmark for max 1 iterations, max -1 seconds without detailed stat logging, with -1s sleep between inferences
+2018-03-20 14:33:07.205044: I tensorflow/tools/benchmark/benchmark_model.cc:345] count=1 curr=2804552
+
+2018-03-20 14:33:07.205116: I tensorflow/tools/benchmark/benchmark_model.cc:312] Running benchmark for max 1000 iterations, max 10 seconds without detailed stat logging, with -1s sleep between inferences
+2018-03-20 14:33:17.481186: I tensorflow/tools/benchmark/benchmark_model.cc:345] count=36 first=283548 curr=285464 min=283547 max=287535 avg=285308 std=908
+
+2018-03-20 14:33:17.481245: I tensorflow/tools/benchmark/benchmark_model.cc:312] Running benchmark for max 1000 iterations, max 10 seconds with detailed stat logging, with -1s sleep between inferences
+2018-03-20 14:33:17.483521: I tensorflow/stream_executor/dso_loader.cc:152] successfully opened CUDA library libcupti.so.9.0 locally
+2018-03-20 14:33:27.649073: I tensorflow/tools/benchmark/benchmark_model.cc:345] count=34 first=509192 curr=290265 min=288902 max=509192 avg=296854 std=36973
+
+2018-03-20 14:33:27.649157: I tensorflow/tools/benchmark/benchmark_model.cc:565] Average inference timings in us: Warmup: 2804552, no stats: 285307, with stats: 296854
+2018-03-20 14:33:27.660565: I tensorflow/core/util/stat_summarizer.cc:358] Number of nodes executed: 567
+2018-03-20 14:33:27.661631: I tensorflow/core/util/stat_summarizer.cc:468] ============================== Run Order ==============================
+2018-03-20 14:33:27.661657: I tensorflow/core/util/stat_summarizer.cc:468] 	             [node type]	  [start]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+2018-03-20 14:33:27.661669: I tensorflow/core/util/stat_summarizer.cc:468] 	                    NoOp	   -0.932	    0.017	    0.014	  0.010%	  0.010%	     0.000	        2	_SOURCE
+2018-03-20 14:33:27.661679: I tensorflow/core/util/stat_summarizer.cc:468] 	                    _Arg	   -0.896	    0.016	    0.010	  0.003%	  0.013%	     0.000	        1	_arg_gpu_0/feature_0_1
+2018-03-20 14:33:27.661689: I tensorflow/core/util/stat_summarizer.cc:468] 	                    _Arg	   -0.879	    0.005	    0.005	  0.002%	  0.015%	     0.000	        1	_arg_gpu_0/coordinate_0_0
+2018-03-20 14:33:27.661700: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.865	    0.011	    0.007	  0.002%	  0.017%	     0.000	        1	ConstantFolding/gpu_0/VFE-1/Tensordot/ListDiff-folded-0
+2018-03-20 14:33:27.661710: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Gather	    2.481	    0.018	    0.026	  0.009%	  0.026%	     0.256	        1	gpu_0/VFE-1/Tensordot/Gather
+2018-03-20 14:33:27.661720: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Gather	    2.492	    0.018	    0.020	  0.007%	  0.033%	     0.256	        1	gpu_0/VFE-1/Tensordot/Gather_1
+2018-03-20 14:33:27.661730: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Gather	    4.407	    0.009	    0.018	  0.006%	  0.039%	     0.256	        1	gpu_0/VFE-2/Tensordot/Gather_1
+2018-03-20 14:33:27.661739: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Gather	    4.409	    0.040	    0.021	  0.007%	  0.046%	     0.256	        1	gpu_0/VFE-2/Tensordot/Gather
+2018-03-20 14:33:27.661749: I tensorflow/core/util/stat_summarizer.cc:468] 	                 _Retval	  287.001	    0.007	    0.011	  0.004%	  0.050%	     0.000	        1	_retval_concat_104_0_0
+2018-03-20 14:33:27.661759: I tensorflow/core/util/stat_summarizer.cc:468] 	                 _Retval	  287.637	    0.007	    0.008	  0.003%	  0.053%	     0.000	        1	_retval_concat_105_0_1
+2018-03-20 14:33:27.661768: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYHtoD	    0.125	    0.127	    0.121	  0.041%	  0.093%	     0.000	        1	edge_631__arg_gpu_0/coordinate_0_0 [MemCpy]
+2018-03-20 14:33:27.661778: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYHtoD	   -0.492	    2.824	    2.775	  0.939%	  1.032%	     0.000	        1	edge_633__arg_gpu_0/feature_0_1 [MemCpy]
+2018-03-20 14:33:27.661788: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYDtoH	    0.000	    0.040	    0.039	  0.013%	  1.045%	     0.000	        1	edge_122_gpu_0/ScatterNd/shape [MemCpy]
+2018-03-20 14:33:27.661798: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYHtoD	    2.725	    0.001	    0.002	  0.001%	  1.046%	     0.000	        1	edge_13_gpu_0/VFE-1/Tensordot/Gather_1 [MemCpy]
+2018-03-20 14:33:27.661808: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYHtoD	    2.745	    0.003	    0.002	  0.001%	  1.047%	     0.000	        1	edge_21_gpu_0/VFE-1/Tensordot/Gather [MemCpy]
+2018-03-20 14:33:27.661817: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYDtoH	    3.240	    0.001	    0.002	  0.001%	  1.048%	     0.000	        1	edge_24_gpu_0/VFE-1/Tensordot/Prod_1 [MemCpy]
+2018-03-20 14:33:27.661827: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYDtoH	    3.374	    0.002	    0.002	  0.001%	  1.048%	     0.000	        1	edge_23_gpu_0/VFE-1/Tensordot/Prod [MemCpy]
+2018-03-20 14:33:27.661837: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYHtoD	    4.529	    0.002	    0.002	  0.001%	  1.049%	     0.000	        1	edge_74_gpu_0/VFE-2/Tensordot/Gather_1 [MemCpy]
+2018-03-20 14:33:27.661856: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYHtoD	    4.547	    0.002	    0.001	  0.000%	  1.049%	     0.000	        1	edge_70_gpu_0/VFE-2/Tensordot/Gather [MemCpy]
+2018-03-20 14:33:27.661867: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYDtoH	    4.743	    0.001	    0.001	  0.000%	  1.049%	     0.000	        1	edge_77_gpu_0/VFE-2/Tensordot/Prod_1 [MemCpy]
+2018-03-20 14:33:27.661877: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYDtoH	    4.787	    0.001	    0.001	  0.000%	  1.050%	     0.000	        1	edge_76_gpu_0/VFE-2/Tensordot/Prod [MemCpy]
+2018-03-20 14:33:27.661886: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYDtoD	  278.646	    0.001	    0.001	  0.001%	  1.051%	     0.000	        3	gpu_0/MiddleAndRPN_/concat [MemCpy]
+2018-03-20 14:33:27.661896: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYDtoH	  282.190	    4.652	    4.655	  1.574%	  2.625%	     0.000	        1	edge_636_concat_104 [MemCpy]
+2018-03-20 14:33:27.661906: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYDtoH	  286.862	    0.665	    0.664	  0.225%	  2.850%	     0.000	        1	edge_638_concat_105 [MemCpy]
+2018-03-20 14:33:27.661916: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Max	    2.494	    0.059	    0.060	  0.020%	  2.870%	     0.000	        1	gpu_0/Max [Kernel]
+2018-03-20 14:33:27.661925: I tensorflow/core/util/stat_summarizer.cc:468] 	            gpu:NotEqual	    2.584	    0.005	    0.005	  0.002%	  2.872%	     0.000	        1	gpu_0/NotEqual [Kernel]
+2018-03-20 14:33:27.661935: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Prod	    3.230	    0.004	    0.004	  0.001%	  2.873%	     0.000	        1	gpu_0/VFE-1/Tensordot/Prod [Kernel]
+2018-03-20 14:33:27.661945: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Tile	    2.640	    0.103	    0.105	  0.036%	  2.909%	     0.000	        1	gpu_0/Tile_1 [Kernel]
+2018-03-20 14:33:27.661955: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Tile	    2.756	    0.401	    0.408	  0.138%	  3.047%	     0.000	        1	gpu_0/Tile_3 [Kernel]
+2018-03-20 14:33:27.661964: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Cast	    3.172	    0.047	    0.048	  0.016%	  3.063%	     0.000	        1	gpu_0/Cast [Kernel]
+2018-03-20 14:33:27.661974: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Cast	    3.226	    0.196	    0.201	  0.068%	  3.131%	     0.000	        1	gpu_0/Cast_1 [Kernel]
+2018-03-20 14:33:27.661984: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:MatMul	    3.632	    0.092	    0.093	  0.031%	  3.162%	     0.000	        1	gpu_0/VFE-1/Tensordot/MatMul [Kernel]
+2018-03-20 14:33:27.661994: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	    3.731	    0.039	    0.039	  0.013%	  3.175%	     0.000	        1	gpu_0/VFE-1/BiasAdd [Kernel]
+2018-03-20 14:33:27.662003: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	    3.776	    0.036	    0.036	  0.012%	  3.187%	     0.000	        1	gpu_0/VFE-1/Relu [Kernel]
+2018-03-20 14:33:27.662013: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Mean	    3.837	    0.029	    0.017	  0.011%	  3.199%	     0.000	        2	gpu_0/VFE-1/moments/mean [Kernel]
+2018-03-20 14:33:27.662023: I tensorflow/core/util/stat_summarizer.cc:468] 	   gpu:SquaredDifference	    3.884	    0.035	    0.035	  0.012%	  3.210%	     0.000	        1	gpu_0/VFE-1/moments/SquaredDifference [Kernel]
+2018-03-20 14:33:27.662033: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Mean	    3.950	    0.029	    0.016	  0.011%	  3.222%	     0.000	        2	gpu_0/VFE-1/moments/variance [Kernel]
+2018-03-20 14:33:27.662042: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Add	    3.996	    0.003	    0.003	  0.001%	  3.223%	     0.000	        1	gpu_0/VFE-1/batchnorm/add [Kernel]
+2018-03-20 14:33:27.662056: I tensorflow/core/util/stat_summarizer.cc:468] 	               gpu:Rsqrt	    4.024	    0.003	    0.003	  0.001%	  3.224%	     0.000	        1	gpu_0/VFE-1/batchnorm/Rsqrt [Kernel]
+2018-03-20 14:33:27.662067: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	    4.053	    0.003	    0.003	  0.001%	  3.225%	     0.000	        1	gpu_0/VFE-1/batchnorm/mul [Kernel]
+2018-03-20 14:33:27.662077: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	    4.080	    0.003	    0.003	  0.001%	  3.226%	     0.000	        1	gpu_0/VFE-1/batchnorm/mul_2 [Kernel]
+2018-03-20 14:33:27.662086: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	    4.110	    0.032	    0.033	  0.011%	  3.237%	     0.000	        1	gpu_0/VFE-1/batchnorm/mul_1 [Kernel]
+2018-03-20 14:33:27.662096: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Sub	    4.150	    0.003	    0.003	  0.001%	  3.238%	     0.000	        1	gpu_0/VFE-1/batchnorm/sub [Kernel]
+2018-03-20 14:33:27.662106: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Add	    4.179	    0.037	    0.037	  0.012%	  3.250%	     0.000	        1	gpu_0/VFE-1/batchnorm/add_1 [Kernel]
+2018-03-20 14:33:27.662115: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Max	    4.224	    0.017	    0.017	  0.006%	  3.256%	     0.000	        1	gpu_0/Max_1 [Kernel]
+2018-03-20 14:33:27.662125: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Tile	    4.266	    0.021	    0.021	  0.007%	  3.263%	     0.000	        1	gpu_0/Tile [Kernel]
+2018-03-20 14:33:27.662135: I tensorflow/core/util/stat_summarizer.cc:468] 	            gpu:ConcatV2	    4.336	    0.041	    0.040	  0.027%	  3.290%	     0.000	        2	gpu_0/concat [Kernel]
+2018-03-20 14:33:27.662144: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	    4.403	    0.099	    0.099	  0.034%	  3.324%	     0.000	        1	gpu_0/Mul [Kernel]
+2018-03-20 14:33:27.662154: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Prod	    4.699	    0.004	    0.004	  0.001%	  3.325%	     0.000	        1	gpu_0/VFE-2/Tensordot/Prod [Kernel]
+2018-03-20 14:33:27.662164: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:MatMul	    4.948	    0.177	    0.180	  0.061%	  3.386%	     0.000	        1	gpu_0/VFE-2/Tensordot/MatMul [Kernel]
+2018-03-20 14:33:27.662174: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	    5.137	    0.142	    0.144	  0.049%	  3.434%	     0.000	        1	gpu_0/VFE-2/BiasAdd [Kernel]
+2018-03-20 14:33:27.662183: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	    5.288	    0.138	    0.139	  0.047%	  3.481%	     0.000	        1	gpu_0/VFE-2/Relu [Kernel]
+2018-03-20 14:33:27.662193: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Mean	    5.486	    0.079	    0.043	  0.029%	  3.511%	     0.000	        2	gpu_0/VFE-2/moments/mean [Kernel]
+2018-03-20 14:33:27.662203: I tensorflow/core/util/stat_summarizer.cc:468] 	   gpu:SquaredDifference	    5.545	    0.140	    0.139	  0.047%	  3.558%	     0.000	        1	gpu_0/VFE-2/moments/SquaredDifference [Kernel]
+2018-03-20 14:33:27.662212: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Mean	    5.733	    0.078	    0.043	  0.029%	  3.587%	     0.000	        2	gpu_0/VFE-2/moments/variance [Kernel]
+2018-03-20 14:33:27.662222: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Add	    5.790	    0.003	    0.003	  0.001%	  3.588%	     0.000	        1	gpu_0/VFE-2/batchnorm/add [Kernel]
+2018-03-20 14:33:27.662232: I tensorflow/core/util/stat_summarizer.cc:468] 	               gpu:Rsqrt	    5.801	    0.003	    0.003	  0.001%	  3.589%	     0.000	        1	gpu_0/VFE-2/batchnorm/Rsqrt [Kernel]
+2018-03-20 14:33:27.662242: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	    5.815	    0.003	    0.003	  0.001%	  3.590%	     0.000	        1	gpu_0/VFE-2/batchnorm/mul [Kernel]
+2018-03-20 14:33:27.662256: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	    5.830	    0.003	    0.003	  0.001%	  3.591%	     0.000	        1	gpu_0/VFE-2/batchnorm/mul_2 [Kernel]
+2018-03-20 14:33:27.662266: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	    5.840	    0.132	    0.134	  0.045%	  3.637%	     0.000	        1	gpu_0/VFE-2/batchnorm/mul_1 [Kernel]
+2018-03-20 14:33:27.662276: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Sub	    5.981	    0.003	    0.004	  0.001%	  3.638%	     0.000	        1	gpu_0/VFE-2/batchnorm/sub [Kernel]
+2018-03-20 14:33:27.662285: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Add	    5.991	    0.140	    0.141	  0.048%	  3.686%	     0.000	        1	gpu_0/VFE-2/batchnorm/add_1 [Kernel]
+2018-03-20 14:33:27.662295: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Max	    6.137	    0.066	    0.066	  0.022%	  3.708%	     0.000	        1	gpu_0/Max_2 [Kernel]
+2018-03-20 14:33:27.662305: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Tile	    6.211	    0.078	    0.079	  0.027%	  3.735%	     0.000	        1	gpu_0/Tile_2 [Kernel]
+2018-03-20 14:33:27.662314: I tensorflow/core/util/stat_summarizer.cc:468] 	            gpu:ConcatV2	    6.376	    0.145	    0.146	  0.099%	  3.833%	     0.000	        2	gpu_0/concat_1 [Kernel]
+2018-03-20 14:33:27.662324: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	    6.616	    0.403	    0.405	  0.137%	  3.970%	     0.000	        1	gpu_0/Mul_1 [Kernel]
+2018-03-20 14:33:27.662334: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Max	    7.028	    0.135	    0.139	  0.047%	  4.017%	     0.000	        1	gpu_0/Max_3 [Kernel]
+2018-03-20 14:33:27.662343: I tensorflow/core/util/stat_summarizer.cc:468] 	           gpu:ScatterNd	    9.661	    4.922	    2.756	  1.864%	  5.881%	     0.000	        2	gpu_0/ScatterNd [Kernel]
+2018-03-20 14:33:27.662353: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	   12.720	   12.417	   12.460	  4.214%	 10.095%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/Pad [Kernel]
+2018-03-20 14:33:27.662363: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv3D	   49.994	   12.492	   15.767	 37.326%	 47.421%	     0.000	        7	gpu_0/MiddleAndRPN_/conv1/Conv3D [Kernel]
+2018-03-20 14:33:27.662372: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  135.678	    2.843	    2.805	  0.949%	 48.370%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/BiasAdd [Kernel]
+2018-03-20 14:33:27.662382: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Mean	  139.139	    1.287	    0.650	  0.440%	 48.810%	     0.000	        2	gpu_0/MiddleAndRPN_/conv1/moments/mean [Kernel]
+2018-03-20 14:33:27.662392: I tensorflow/core/util/stat_summarizer.cc:468] 	   gpu:SquaredDifference	  139.804	    2.615	    2.631	  0.890%	 49.700%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/moments/SquaredDifference [Kernel]
+2018-03-20 14:33:27.662402: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Mean	  143.091	    1.286	    0.649	  0.439%	 50.139%	     0.000	        2	gpu_0/MiddleAndRPN_/conv1/moments/variance [Kernel]
+2018-03-20 14:33:27.662412: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Add	  143.754	    0.004	    0.004	  0.001%	 50.140%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/batchnorm/add [Kernel]
+2018-03-20 14:33:27.662421: I tensorflow/core/util/stat_summarizer.cc:468] 	               gpu:Rsqrt	  143.765	    0.004	    0.004	  0.001%	 50.141%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/batchnorm/Rsqrt [Kernel]
+2018-03-20 14:33:27.662431: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	  143.775	    0.004	    0.004	  0.001%	 50.143%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/batchnorm/mul [Kernel]
+2018-03-20 14:33:27.662441: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	  143.786	    0.004	    0.004	  0.001%	 50.144%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/batchnorm/mul_2 [Kernel]
+2018-03-20 14:33:27.662454: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	  143.796	    2.621	    2.614	  0.884%	 51.028%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/batchnorm/mul_1 [Kernel]
+2018-03-20 14:33:27.662465: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Sub	  146.417	    0.004	    0.004	  0.001%	 51.029%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/batchnorm/sub [Kernel]
+2018-03-20 14:33:27.662474: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Add	  146.428	    2.612	    2.617	  0.885%	 51.914%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/batchnorm/add_1 [Kernel]
+2018-03-20 14:33:27.662484: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  149.052	    2.619	    2.610	  0.883%	 52.797%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/Relu [Kernel]
+2018-03-20 14:33:27.662494: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  151.669	    2.843	    2.843	  0.961%	 53.759%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/Pad [Kernel]
+2018-03-20 14:33:27.662504: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv3D	  161.303	    2.558	    4.887	 11.568%	 65.327%	     0.000	        7	gpu_0/MiddleAndRPN_/conv2/Conv3D [Kernel]
+2018-03-20 14:33:27.662513: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  188.790	    1.631	    1.639	  0.554%	 65.881%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/BiasAdd [Kernel]
+2018-03-20 14:33:27.662523: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Mean	  190.828	    0.781	    0.394	  0.267%	 66.147%	     0.000	        2	gpu_0/MiddleAndRPN_/conv2/moments/mean [Kernel]
+2018-03-20 14:33:27.662533: I tensorflow/core/util/stat_summarizer.cc:468] 	   gpu:SquaredDifference	  191.237	    1.563	    1.576	  0.533%	 66.681%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/moments/SquaredDifference [Kernel]
+2018-03-20 14:33:27.662542: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Mean	  193.213	    0.772	    0.393	  0.266%	 66.946%	     0.000	        2	gpu_0/MiddleAndRPN_/conv2/moments/variance [Kernel]
+2018-03-20 14:33:27.662552: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Add	  193.620	    0.004	    0.004	  0.001%	 66.948%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/batchnorm/add [Kernel]
+2018-03-20 14:33:27.662562: I tensorflow/core/util/stat_summarizer.cc:468] 	               gpu:Rsqrt	  193.631	    0.003	    0.004	  0.001%	 66.949%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/batchnorm/Rsqrt [Kernel]
+2018-03-20 14:33:27.662572: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	  193.641	    0.004	    0.004	  0.001%	 66.950%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/batchnorm/mul [Kernel]
+2018-03-20 14:33:27.662581: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	  193.651	    0.004	    0.004	  0.001%	 66.951%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/batchnorm/mul_2 [Kernel]
+2018-03-20 14:33:27.662591: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	  193.662	    1.551	    1.560	  0.527%	 67.479%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/batchnorm/mul_1 [Kernel]
+2018-03-20 14:33:27.662601: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Sub	  195.228	    0.004	    0.004	  0.001%	 67.480%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/batchnorm/sub [Kernel]
+2018-03-20 14:33:27.662610: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Add	  195.239	    1.585	    1.570	  0.531%	 68.011%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/batchnorm/add_1 [Kernel]
+2018-03-20 14:33:27.662620: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  196.815	    1.563	    1.560	  0.528%	 68.539%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/Relu [Kernel]
+2018-03-20 14:33:27.662630: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  198.382	    2.194	    2.196	  0.742%	 69.281%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/Pad [Kernel]
+2018-03-20 14:33:27.662643: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv3D	  205.877	    2.579	    3.390	  8.026%	 77.307%	     0.000	        7	gpu_0/MiddleAndRPN_/conv3/Conv3D [Kernel]
+2018-03-20 14:33:27.662654: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  224.382	    1.081	    1.078	  0.365%	 77.672%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/BiasAdd [Kernel]
+2018-03-20 14:33:27.662664: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Mean	  225.733	    0.520	    0.268	  0.181%	 77.853%	     0.000	        2	gpu_0/MiddleAndRPN_/conv3/moments/mean [Kernel]
+2018-03-20 14:33:27.662673: I tensorflow/core/util/stat_summarizer.cc:468] 	   gpu:SquaredDifference	  226.016	    1.043	    1.052	  0.356%	 78.209%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/moments/SquaredDifference [Kernel]
+2018-03-20 14:33:27.662683: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Mean	  227.339	    0.522	    0.266	  0.180%	 78.389%	     0.000	        2	gpu_0/MiddleAndRPN_/conv3/moments/variance [Kernel]
+2018-03-20 14:33:27.662693: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Add	  227.619	    0.004	    0.004	  0.001%	 78.390%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/batchnorm/add [Kernel]
+2018-03-20 14:33:27.662702: I tensorflow/core/util/stat_summarizer.cc:468] 	               gpu:Rsqrt	  227.629	    0.004	    0.004	  0.001%	 78.391%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/batchnorm/Rsqrt [Kernel]
+2018-03-20 14:33:27.662712: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	  227.639	    0.004	    0.004	  0.001%	 78.393%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/batchnorm/mul [Kernel]
+2018-03-20 14:33:27.662722: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	  227.650	    0.004	    0.004	  0.001%	 78.394%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/batchnorm/mul_2 [Kernel]
+2018-03-20 14:33:27.662732: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	  227.661	    1.034	    1.036	  0.351%	 78.744%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/batchnorm/mul_1 [Kernel]
+2018-03-20 14:33:27.662741: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Sub	  228.704	    0.004	    0.004	  0.001%	 78.746%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/batchnorm/sub [Kernel]
+2018-03-20 14:33:27.662751: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Add	  228.714	    1.057	    1.049	  0.355%	 79.100%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/batchnorm/add_1 [Kernel]
+2018-03-20 14:33:27.662761: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  229.770	    1.040	    1.041	  0.352%	 79.452%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/Relu [Kernel]
+2018-03-20 14:33:27.662771: I tensorflow/core/util/stat_summarizer.cc:468] 	           gpu:Transpose	  230.817	    1.358	    1.375	  0.465%	 79.917%	     0.000	        1	gpu_0/MiddleAndRPN_/transpose [Kernel]
+2018-03-20 14:33:27.662780: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  232.198	    1.085	    1.093	  0.370%	 80.287%	     0.000	        1	gpu_0/MiddleAndRPN_/conv4/Pad [Kernel]
+2018-03-20 14:33:27.662790: I tensorflow/core/util/stat_summarizer.cc:468] 	           gpu:Transpose	  233.298	    1.059	    1.063	  0.359%	 80.646%	     0.000	        1	gpu_0/MiddleAndRPN_/conv4/Conv2D-0-TransposeNHWCToNCHW-LayoutOptimizer [Kernel]
+2018-03-20 14:33:27.662800: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  234.389	    0.017	    1.000	  1.014%	 81.660%	     0.000	        3	gpu_0/MiddleAndRPN_/conv4/Conv2D [Kernel]
+2018-03-20 14:33:27.662810: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  237.392	    0.279	    0.280	  0.095%	 81.755%	     0.000	        1	gpu_0/MiddleAndRPN_/conv4/BiasAdd [Kernel]
+2018-03-20 14:33:27.662823: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  237.697	    0.997	    1.021	  0.345%	 82.101%	     0.000	        1	gpu_0/MiddleAndRPN_/conv4/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.662833: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  238.726	    0.260	    0.259	  0.088%	 82.188%	     0.000	        1	gpu_0/MiddleAndRPN_/conv4/Relu [Kernel]
+2018-03-20 14:33:27.662843: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  238.992	    0.313	    0.323	  0.109%	 82.297%	     0.000	        1	gpu_0/MiddleAndRPN_/conv5/Pad [Kernel]
+2018-03-20 14:33:27.662853: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  239.345	    0.017	    0.542	  0.550%	 82.848%	     0.000	        3	gpu_0/MiddleAndRPN_/conv5/Conv2D [Kernel]
+2018-03-20 14:33:27.662863: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  240.968	    0.277	    0.278	  0.094%	 82.942%	     0.000	        1	gpu_0/MiddleAndRPN_/conv5/BiasAdd [Kernel]
+2018-03-20 14:33:27.662872: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  241.270	    0.996	    1.006	  0.340%	 83.282%	     0.000	        1	gpu_0/MiddleAndRPN_/conv5/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.662882: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  242.283	    0.258	    0.259	  0.088%	 83.369%	     0.000	        1	gpu_0/MiddleAndRPN_/conv5/Relu [Kernel]
+2018-03-20 14:33:27.662892: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  242.549	    0.311	    0.317	  0.107%	 83.476%	     0.000	        1	gpu_0/MiddleAndRPN_/conv6/Pad [Kernel]
+2018-03-20 14:33:27.662902: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  242.895	    0.017	    0.542	  0.550%	 84.026%	     0.000	        3	gpu_0/MiddleAndRPN_/conv6/Conv2D [Kernel]
+2018-03-20 14:33:27.662911: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  244.517	    0.278	    0.277	  0.094%	 84.120%	     0.000	        1	gpu_0/MiddleAndRPN_/conv6/BiasAdd [Kernel]
+2018-03-20 14:33:27.662921: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  244.820	    0.993	    1.006	  0.340%	 84.460%	     0.000	        1	gpu_0/MiddleAndRPN_/conv6/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.662930: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  245.833	    0.281	    0.260	  0.088%	 84.548%	     0.000	        1	gpu_0/MiddleAndRPN_/conv6/Relu [Kernel]
+2018-03-20 14:33:27.662940: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  246.100	    0.312	    0.317	  0.107%	 84.655%	     0.000	        1	gpu_0/MiddleAndRPN_/conv7/Pad [Kernel]
+2018-03-20 14:33:27.662950: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  246.446	    0.017	    0.542	  0.550%	 85.205%	     0.000	        3	gpu_0/MiddleAndRPN_/conv7/Conv2D [Kernel]
+2018-03-20 14:33:27.662959: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  248.069	    0.276	    0.278	  0.094%	 85.299%	     0.000	        1	gpu_0/MiddleAndRPN_/conv7/BiasAdd [Kernel]
+2018-03-20 14:33:27.662969: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  248.372	    0.994	    1.006	  0.340%	 85.639%	     0.000	        1	gpu_0/MiddleAndRPN_/conv7/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.662979: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  249.384	    0.261	    0.259	  0.088%	 85.727%	     0.000	        1	gpu_0/MiddleAndRPN_/conv7/Relu [Kernel]
+2018-03-20 14:33:27.662988: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  249.651	    0.312	    0.317	  0.107%	 85.834%	     0.000	        1	gpu_0/MiddleAndRPN_/conv8/Pad [Kernel]
+2018-03-20 14:33:27.662998: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  249.995	    0.017	    0.281	  0.285%	 86.119%	     0.000	        3	gpu_0/MiddleAndRPN_/conv8/Conv2D [Kernel]
+2018-03-20 14:33:27.663008: I tensorflow/core/util/stat_summarizer.cc:468] 	 gpu:Conv2DBackpropInput	  250.877	    0.028	    1.340	  1.360%	 87.478%	     0.000	        3	gpu_0/MiddleAndRPN_/deconv1/conv2d_transpose [Kernel]
+2018-03-20 14:33:27.663021: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  254.884	    0.071	    0.072	  0.024%	 87.503%	     0.000	        1	gpu_0/MiddleAndRPN_/conv8/BiasAdd [Kernel]
+2018-03-20 14:33:27.663032: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  254.962	    0.547	    0.550	  0.186%	 87.689%	     0.000	        1	gpu_0/MiddleAndRPN_/deconv1/BiasAdd [Kernel]
+2018-03-20 14:33:27.663041: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  255.538	    0.078	    0.078	  0.026%	 87.715%	     0.000	        1	gpu_0/MiddleAndRPN_/conv8/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.663051: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  255.643	    1.696	    1.711	  0.579%	 88.294%	     0.000	        1	gpu_0/MiddleAndRPN_/deconv1/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.663061: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  257.361	    0.065	    0.066	  0.022%	 88.316%	     0.000	        1	gpu_0/MiddleAndRPN_/conv8/Relu [Kernel]
+2018-03-20 14:33:27.663071: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  257.433	    0.515	    0.518	  0.175%	 88.491%	     0.000	        1	gpu_0/MiddleAndRPN_/deconv1/Relu [Kernel]
+2018-03-20 14:33:27.663080: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  257.958	    0.105	    0.108	  0.036%	 88.528%	     0.000	        1	gpu_0/MiddleAndRPN_/conv9/Pad [Kernel]
+2018-03-20 14:33:27.663090: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  258.096	    0.017	    0.163	  0.165%	 88.693%	     0.000	        3	gpu_0/MiddleAndRPN_/conv9/Conv2D [Kernel]
+2018-03-20 14:33:27.663100: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  258.582	    0.069	    0.071	  0.024%	 88.717%	     0.000	        1	gpu_0/MiddleAndRPN_/conv9/BiasAdd [Kernel]
+2018-03-20 14:33:27.663109: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  258.679	    0.079	    0.078	  0.027%	 88.744%	     0.000	        1	gpu_0/MiddleAndRPN_/conv9/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.663119: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  258.764	    0.066	    0.066	  0.022%	 88.766%	     0.000	        1	gpu_0/MiddleAndRPN_/conv9/Relu [Kernel]
+2018-03-20 14:33:27.663129: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  258.837	    0.106	    0.120	  0.041%	 88.807%	     0.000	        1	gpu_0/MiddleAndRPN_/conv10/Pad [Kernel]
+2018-03-20 14:33:27.663138: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  258.988	    0.017	    0.170	  0.172%	 88.979%	     0.000	        3	gpu_0/MiddleAndRPN_/conv10/Conv2D [Kernel]
+2018-03-20 14:33:27.663148: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  259.494	    0.070	    0.071	  0.024%	 89.003%	     0.000	        1	gpu_0/MiddleAndRPN_/conv10/BiasAdd [Kernel]
+2018-03-20 14:33:27.663158: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  259.591	    0.078	    0.079	  0.027%	 89.030%	     0.000	        1	gpu_0/MiddleAndRPN_/conv10/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.663167: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  259.676	    0.065	    0.066	  0.022%	 89.052%	     0.000	        1	gpu_0/MiddleAndRPN_/conv10/Relu [Kernel]
+2018-03-20 14:33:27.663177: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  259.749	    0.106	    0.108	  0.036%	 89.088%	     0.000	        1	gpu_0/MiddleAndRPN_/conv11/Pad [Kernel]
+2018-03-20 14:33:27.663187: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  259.886	    0.017	    0.163	  0.165%	 89.253%	     0.000	        3	gpu_0/MiddleAndRPN_/conv11/Conv2D [Kernel]
+2018-03-20 14:33:27.663197: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  260.371	    0.071	    0.071	  0.024%	 89.278%	     0.000	        1	gpu_0/MiddleAndRPN_/conv11/BiasAdd [Kernel]
+2018-03-20 14:33:27.663210: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  260.468	    0.078	    0.078	  0.027%	 89.304%	     0.000	        1	gpu_0/MiddleAndRPN_/conv11/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.663221: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  260.553	    0.066	    0.066	  0.022%	 89.326%	     0.000	        1	gpu_0/MiddleAndRPN_/conv11/Relu [Kernel]
+2018-03-20 14:33:27.663230: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  260.626	    0.106	    0.108	  0.036%	 89.363%	     0.000	        1	gpu_0/MiddleAndRPN_/conv12/Pad [Kernel]
+2018-03-20 14:33:27.663240: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  260.763	    0.016	    0.163	  0.165%	 89.528%	     0.000	        3	gpu_0/MiddleAndRPN_/conv12/Conv2D [Kernel]
+2018-03-20 14:33:27.663250: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  261.249	    0.070	    0.071	  0.024%	 89.552%	     0.000	        1	gpu_0/MiddleAndRPN_/conv12/BiasAdd [Kernel]
+2018-03-20 14:33:27.663259: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  261.346	    0.078	    0.079	  0.027%	 89.579%	     0.000	        1	gpu_0/MiddleAndRPN_/conv12/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.663269: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  261.431	    0.066	    0.067	  0.023%	 89.601%	     0.000	        1	gpu_0/MiddleAndRPN_/conv12/Relu [Kernel]
+2018-03-20 14:33:27.663279: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  261.505	    0.105	    0.108	  0.036%	 89.638%	     0.000	        1	gpu_0/MiddleAndRPN_/conv13/Pad [Kernel]
+2018-03-20 14:33:27.663288: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  261.642	    0.017	    0.163	  0.165%	 89.803%	     0.000	        3	gpu_0/MiddleAndRPN_/conv13/Conv2D [Kernel]
+2018-03-20 14:33:27.663298: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  262.128	    0.071	    0.071	  0.024%	 89.827%	     0.000	        1	gpu_0/MiddleAndRPN_/conv13/BiasAdd [Kernel]
+2018-03-20 14:33:27.663308: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  262.225	    0.078	    0.079	  0.027%	 89.853%	     0.000	        1	gpu_0/MiddleAndRPN_/conv13/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.663317: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  262.310	    0.066	    0.066	  0.022%	 89.876%	     0.000	        1	gpu_0/MiddleAndRPN_/conv13/Relu [Kernel]
+2018-03-20 14:33:27.663327: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  262.383	    0.105	    0.108	  0.036%	 89.912%	     0.000	        1	gpu_0/MiddleAndRPN_/conv14/Pad [Kernel]
+2018-03-20 14:33:27.663337: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  262.530	    0.034	    0.158	  0.160%	 90.073%	     0.000	        3	gpu_0/MiddleAndRPN_/conv14/Conv2D [Kernel]
+2018-03-20 14:33:27.663346: I tensorflow/core/util/stat_summarizer.cc:468] 	 gpu:Conv2DBackpropInput	  263.096	    0.015	    0.661	  0.671%	 90.743%	     0.000	        3	gpu_0/MiddleAndRPN_/deconv2/conv2d_transpose [Kernel]
+2018-03-20 14:33:27.663356: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  265.001	    0.039	    0.039	  0.013%	 90.756%	     0.000	        1	gpu_0/MiddleAndRPN_/conv14/BiasAdd [Kernel]
+2018-03-20 14:33:27.663366: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  265.047	    0.543	    0.550	  0.186%	 90.942%	     0.000	        1	gpu_0/MiddleAndRPN_/deconv2/BiasAdd [Kernel]
+2018-03-20 14:33:27.663375: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  265.622	    0.048	    0.048	  0.016%	 90.959%	     0.000	        1	gpu_0/MiddleAndRPN_/conv14/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.663385: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  265.695	    1.696	    1.711	  0.579%	 91.537%	     0.000	        1	gpu_0/MiddleAndRPN_/deconv2/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.663399: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  267.413	    0.034	    0.035	  0.012%	 91.549%	     0.000	        1	gpu_0/MiddleAndRPN_/conv14/Relu [Kernel]
+2018-03-20 14:33:27.663409: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  267.455	    0.522	    0.517	  0.175%	 91.724%	     0.000	        1	gpu_0/MiddleAndRPN_/deconv2/Relu [Kernel]
+2018-03-20 14:33:27.663419: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  267.979	    0.063	    0.065	  0.022%	 91.746%	     0.000	        1	gpu_0/MiddleAndRPN_/conv15/Pad [Kernel]
+2018-03-20 14:33:27.663428: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  268.124	    0.069	    0.219	  0.222%	 91.968%	     0.000	        3	gpu_0/MiddleAndRPN_/conv15/Conv2D [Kernel]
+2018-03-20 14:33:27.663438: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  268.727	    0.036	    0.036	  0.012%	 91.980%	     0.000	        1	gpu_0/MiddleAndRPN_/conv15/BiasAdd [Kernel]
+2018-03-20 14:33:27.663448: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  268.790	    0.047	    0.048	  0.016%	 91.997%	     0.000	        1	gpu_0/MiddleAndRPN_/conv15/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.663457: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  268.845	    0.034	    0.033	  0.011%	 92.008%	     0.000	        1	gpu_0/MiddleAndRPN_/conv15/Relu [Kernel]
+2018-03-20 14:33:27.663467: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  268.885	    0.065	    0.066	  0.022%	 92.030%	     0.000	        1	gpu_0/MiddleAndRPN_/conv16/Pad [Kernel]
+2018-03-20 14:33:27.663477: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  269.028	    0.066	    0.216	  0.219%	 92.249%	     0.000	        3	gpu_0/MiddleAndRPN_/conv16/Conv2D [Kernel]
+2018-03-20 14:33:27.663500: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  269.625	    0.036	    0.036	  0.012%	 92.261%	     0.000	        1	gpu_0/MiddleAndRPN_/conv16/BiasAdd [Kernel]
+2018-03-20 14:33:27.663522: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  269.687	    0.048	    0.048	  0.016%	 92.278%	     0.000	        1	gpu_0/MiddleAndRPN_/conv16/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.663534: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  269.742	    0.034	    0.034	  0.011%	 92.289%	     0.000	        1	gpu_0/MiddleAndRPN_/conv16/Relu [Kernel]
+2018-03-20 14:33:27.663543: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  269.783	    0.066	    0.066	  0.022%	 92.311%	     0.000	        1	gpu_0/MiddleAndRPN_/conv17/Pad [Kernel]
+2018-03-20 14:33:27.663553: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  269.926	    0.068	    0.216	  0.219%	 92.530%	     0.000	        3	gpu_0/MiddleAndRPN_/conv17/Conv2D [Kernel]
+2018-03-20 14:33:27.663563: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  270.522	    0.036	    0.036	  0.012%	 92.542%	     0.000	        1	gpu_0/MiddleAndRPN_/conv17/BiasAdd [Kernel]
+2018-03-20 14:33:27.663572: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  270.585	    0.048	    0.048	  0.016%	 92.558%	     0.000	        1	gpu_0/MiddleAndRPN_/conv17/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.663582: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  270.640	    0.033	    0.034	  0.011%	 92.570%	     0.000	        1	gpu_0/MiddleAndRPN_/conv17/Relu [Kernel]
+2018-03-20 14:33:27.663592: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  270.680	    0.065	    0.065	  0.022%	 92.592%	     0.000	        1	gpu_0/MiddleAndRPN_/conv18/Pad [Kernel]
+2018-03-20 14:33:27.663601: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  270.823	    0.070	    0.217	  0.220%	 92.812%	     0.000	        3	gpu_0/MiddleAndRPN_/conv18/Conv2D [Kernel]
+2018-03-20 14:33:27.663616: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  271.422	    0.036	    0.036	  0.012%	 92.824%	     0.000	        1	gpu_0/MiddleAndRPN_/conv18/BiasAdd [Kernel]
+2018-03-20 14:33:27.663627: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  271.484	    0.048	    0.048	  0.016%	 92.840%	     0.000	        1	gpu_0/MiddleAndRPN_/conv18/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.663636: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  271.539	    0.033	    0.033	  0.011%	 92.851%	     0.000	        1	gpu_0/MiddleAndRPN_/conv18/Relu [Kernel]
+2018-03-20 14:33:27.663646: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  271.579	    0.065	    0.065	  0.022%	 92.874%	     0.000	        1	gpu_0/MiddleAndRPN_/conv19/Pad [Kernel]
+2018-03-20 14:33:27.663655: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  271.723	    0.072	    0.217	  0.220%	 93.094%	     0.000	        3	gpu_0/MiddleAndRPN_/conv19/Conv2D [Kernel]
+2018-03-20 14:33:27.663665: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  272.322	    0.036	    0.036	  0.012%	 93.106%	     0.000	        1	gpu_0/MiddleAndRPN_/conv19/BiasAdd [Kernel]
+2018-03-20 14:33:27.663675: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  272.384	    0.048	    0.048	  0.016%	 93.123%	     0.000	        1	gpu_0/MiddleAndRPN_/conv19/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.663685: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  272.439	    0.035	    0.034	  0.011%	 93.134%	     0.000	        1	gpu_0/MiddleAndRPN_/conv19/Relu [Kernel]
+2018-03-20 14:33:27.663694: I tensorflow/core/util/stat_summarizer.cc:468] 	 gpu:Conv2DBackpropInput	  272.652	    0.144	    0.942	  0.956%	 94.090%	     0.000	        3	gpu_0/MiddleAndRPN_/deconv3/conv2d_transpose [Kernel]
+2018-03-20 14:33:27.663704: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  275.326	    0.547	    0.549	  0.186%	 94.276%	     0.000	        1	gpu_0/MiddleAndRPN_/deconv3/BiasAdd [Kernel]
+2018-03-20 14:33:27.663714: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  275.901	    1.700	    1.714	  0.580%	 94.855%	     0.000	        1	gpu_0/MiddleAndRPN_/deconv3/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.663723: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  277.622	    0.514	    0.517	  0.175%	 95.030%	     0.000	        1	gpu_0/MiddleAndRPN_/deconv3/Relu [Kernel]
+2018-03-20 14:33:27.663733: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  279.661	    0.005	    0.296	  0.300%	 95.330%	     0.000	        3	gpu_0/MiddleAndRPN_/conv21/Conv2D [Kernel]
+2018-03-20 14:33:27.663742: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	  280.564	    0.004	    0.291	  0.295%	 95.626%	     0.000	        3	gpu_0/MiddleAndRPN_/conv20/Conv2D [Kernel]
+2018-03-20 14:33:27.663752: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  281.444	    0.031	    0.031	  0.011%	 95.636%	     0.000	        1	gpu_0/MiddleAndRPN_/conv21/BiasAdd [Kernel]
+2018-03-20 14:33:27.663762: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  281.480	    0.009	    0.008	  0.003%	 95.639%	     0.000	        1	gpu_0/MiddleAndRPN_/conv20/BiasAdd [Kernel]
+2018-03-20 14:33:27.663771: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  281.510	    0.300	    0.305	  0.103%	 95.742%	     0.000	        1	gpu_0/MiddleAndRPN_/conv21/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.663781: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	  281.837	    0.235	    0.239	  0.081%	 95.823%	     0.000	        1	gpu_0/MiddleAndRPN_/conv20/FusedBatchNorm [Kernel]
+2018-03-20 14:33:27.663791: I tensorflow/core/util/stat_summarizer.cc:468] 	           gpu:Transpose	  282.081	    0.080	    0.080	  0.027%	 95.850%	     0.000	        1	gpu_0/MiddleAndRPN_/conv21/FusedBatchNorm-0-0-TransposeNCHWToNHWC-LayoutOptimizer [Kernel]
+2018-03-20 14:33:27.663807: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	  282.167	    0.006	    0.006	  0.002%	 95.852%	     0.000	        1	gpu_0/MiddleAndRPN_/conv20/Relu [Kernel]
+2018-03-20 14:33:27.663817: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:Sigmoid	  282.178	    0.006	    0.006	  0.002%	 95.854%	     0.000	        1	gpu_0/MiddleAndRPN_/Sigmoid [Kernel]
+2018-03-20 14:33:27.663826: I tensorflow/core/util/stat_summarizer.cc:468] 	           gpu:Transpose	  282.189	    0.019	    0.018	  0.006%	 95.860%	     0.000	        1	gpu_0/MiddleAndRPN_/Sigmoid-0-0-TransposeNCHWToNHWC-LayoutOptimizer [Kernel]
+2018-03-20 14:33:27.663836: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.862	    0.044	    0.016	  0.005%	 95.866%	     0.000	        1	MiddleAndRPN_/conv21/kernel
+2018-03-20 14:33:27.663846: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.843	    0.008	    0.006	  0.002%	 95.868%	     0.000	        1	MiddleAndRPN_/conv21/bias
+2018-03-20 14:33:27.663856: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.835	    0.007	    0.005	  0.002%	 95.870%	     0.000	        1	MiddleAndRPN_/conv21/gamma
+2018-03-20 14:33:27.663866: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.828	    0.006	    0.006	  0.002%	 95.872%	     0.000	        1	MiddleAndRPN_/conv21/beta
+2018-03-20 14:33:27.663875: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.820	    0.009	    0.006	  0.002%	 95.874%	     0.000	        1	gpu_0/MiddleAndRPN_/conv21/Const
+2018-03-20 14:33:27.663885: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.812	    0.006	    0.005	  0.002%	 95.876%	     0.000	        1	MiddleAndRPN_/conv3/gamma
+2018-03-20 14:33:27.663895: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.804	    0.006	    0.006	  0.002%	 95.878%	     0.000	        1	MiddleAndRPN_/deconv3/kernel
+2018-03-20 14:33:27.663905: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.797	    0.016	    0.004	  0.001%	 95.879%	     0.000	        1	gpu_0/MiddleAndRPN_/conv14/Pad/paddings
+2018-03-20 14:33:27.663914: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.788	    0.007	    0.005	  0.002%	 95.881%	     0.000	        1	MiddleAndRPN_/conv14/kernel
+2018-03-20 14:33:27.663924: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.781	    0.007	    0.005	  0.002%	 95.883%	     0.000	        1	MiddleAndRPN_/conv14/bias
+2018-03-20 14:33:27.663934: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.774	    0.007	    0.004	  0.001%	 95.884%	     0.000	        1	MiddleAndRPN_/conv14/gamma
+2018-03-20 14:33:27.663944: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.769	    0.006	    0.004	  0.001%	 95.885%	     0.000	        1	MiddleAndRPN_/conv14/beta
+2018-03-20 14:33:27.663953: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.763	    0.007	    0.006	  0.002%	 95.887%	     0.000	        1	MiddleAndRPN_/conv15/kernel
+2018-03-20 14:33:27.663963: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.756	    0.006	    0.005	  0.002%	 95.889%	     0.000	        1	MiddleAndRPN_/conv15/bias
+2018-03-20 14:33:27.663972: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.751	    0.006	    0.004	  0.001%	 95.890%	     0.000	        1	MiddleAndRPN_/conv15/gamma
+2018-03-20 14:33:27.663982: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.745	    0.006	    0.004	  0.001%	 95.892%	     0.000	        1	MiddleAndRPN_/conv15/beta
+2018-03-20 14:33:27.663992: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.738	    0.006	    0.003	  0.001%	 95.893%	     0.000	        1	gpu_0/MiddleAndRPN_/transpose/perm
+2018-03-20 14:33:27.664007: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.734	    0.007	    0.004	  0.001%	 95.894%	     0.000	        1	MiddleAndRPN_/conv16/kernel
+2018-03-20 14:33:27.664017: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.728	    0.010	    0.004	  0.001%	 95.896%	     0.000	        1	MiddleAndRPN_/conv16/bias
+2018-03-20 14:33:27.664027: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.723	    0.006	    0.004	  0.001%	 95.897%	     0.000	        1	MiddleAndRPN_/conv16/gamma
+2018-03-20 14:33:27.664036: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.718	    0.006	    0.004	  0.001%	 95.898%	     0.000	        1	MiddleAndRPN_/conv16/beta
+2018-03-20 14:33:27.664046: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.713	    0.008	    0.003	  0.001%	 95.899%	     0.000	        1	gpu_0/MiddleAndRPN_/Reshape/shape
+2018-03-20 14:33:27.664056: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.709	    0.007	    0.004	  0.001%	 95.901%	     0.000	        1	MiddleAndRPN_/conv17/kernel
+2018-03-20 14:33:27.664065: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.704	    0.006	    0.004	  0.001%	 95.902%	     0.000	        1	MiddleAndRPN_/conv17/bias
+2018-03-20 14:33:27.664075: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.698	    0.009	    0.004	  0.001%	 95.903%	     0.000	        1	MiddleAndRPN_/conv17/gamma
+2018-03-20 14:33:27.664085: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.694	    0.006	    0.003	  0.001%	 95.904%	     0.000	        1	MiddleAndRPN_/conv17/beta
+2018-03-20 14:33:27.664094: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.689	    0.007	    0.004	  0.001%	 95.906%	     0.000	        1	MiddleAndRPN_/conv4/kernel
+2018-03-20 14:33:27.664104: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.683	    0.010	    0.004	  0.001%	 95.907%	     0.000	        1	MiddleAndRPN_/conv18/kernel
+2018-03-20 14:33:27.664113: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.678	    0.006	    0.003	  0.001%	 95.908%	     0.000	        1	MiddleAndRPN_/conv18/bias
+2018-03-20 14:33:27.664123: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.673	    0.005	    0.003	  0.001%	 95.910%	     0.000	        1	MiddleAndRPN_/conv18/gamma
+2018-03-20 14:33:27.664132: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.669	    0.008	    0.004	  0.001%	 95.911%	     0.000	        1	MiddleAndRPN_/conv18/beta
+2018-03-20 14:33:27.664142: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.664	    0.006	    0.004	  0.001%	 95.912%	     0.000	        1	MiddleAndRPN_/conv4/bias
+2018-03-20 14:33:27.664152: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.658	    0.015	    0.005	  0.002%	 95.914%	     0.000	        1	MiddleAndRPN_/conv19/kernel
+2018-03-20 14:33:27.664161: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.652	    0.006	    0.004	  0.001%	 95.915%	     0.000	        1	MiddleAndRPN_/conv19/bias
+2018-03-20 14:33:27.664171: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.647	    0.005	    0.003	  0.001%	 95.916%	     0.000	        1	MiddleAndRPN_/conv19/gamma
+2018-03-20 14:33:27.664181: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.643	    0.008	    0.004	  0.001%	 95.917%	     0.000	        1	MiddleAndRPN_/conv19/beta
+2018-03-20 14:33:27.664190: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.638	    0.006	    0.003	  0.001%	 95.919%	     0.000	        1	MiddleAndRPN_/conv4/gamma
+2018-03-20 14:33:27.664200: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.634	    0.006	    0.003	  0.001%	 95.920%	     0.000	        1	MiddleAndRPN_/conv4/beta
+2018-03-20 14:33:27.664214: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.629	    0.009	    0.004	  0.001%	 95.921%	     0.000	        1	MiddleAndRPN_/deconv3/bias
+2018-03-20 14:33:27.664224: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.624	    0.006	    0.004	  0.001%	 95.922%	     0.000	        1	MiddleAndRPN_/deconv3/gamma
+2018-03-20 14:33:27.664234: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.619	    0.005	    0.004	  0.001%	 95.924%	     0.000	        1	MiddleAndRPN_/deconv3/beta
+2018-03-20 14:33:27.664243: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.614	    0.010	    0.004	  0.001%	 95.925%	     0.000	        1	MiddleAndRPN_/deconv2/kernel
+2018-03-20 14:33:27.664271: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.609	    0.007	    0.004	  0.001%	 95.927%	     0.000	        1	MiddleAndRPN_/conv8/kernel
+2018-03-20 14:33:27.664280: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.604	    0.005	    0.004	  0.001%	 95.928%	     0.000	        1	MiddleAndRPN_/conv8/bias
+2018-03-20 14:33:27.664290: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.599	    0.009	    0.004	  0.001%	 95.929%	     0.000	        1	MiddleAndRPN_/conv8/gamma
+2018-03-20 14:33:27.664299: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.594	    0.005	    0.004	  0.001%	 95.930%	     0.000	        1	MiddleAndRPN_/conv8/beta
+2018-03-20 14:33:27.664309: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.590	    0.007	    0.004	  0.001%	 95.932%	     0.000	        1	MiddleAndRPN_/conv5/kernel
+2018-03-20 14:33:27.664318: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.585	    0.009	    0.004	  0.001%	 95.933%	     0.000	        1	MiddleAndRPN_/conv9/kernel
+2018-03-20 14:33:27.664328: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.579	    0.005	    0.004	  0.001%	 95.934%	     0.000	        1	MiddleAndRPN_/conv9/bias
+2018-03-20 14:33:27.664338: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.574	    0.006	    0.004	  0.001%	 95.936%	     0.000	        1	MiddleAndRPN_/conv9/gamma
+2018-03-20 14:33:27.664347: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.570	    0.006	    0.004	  0.001%	 95.937%	     0.000	        1	MiddleAndRPN_/conv9/beta
+2018-03-20 14:33:27.664357: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.565	    0.005	    0.004	  0.001%	 95.938%	     0.000	        1	MiddleAndRPN_/conv5/bias
+2018-03-20 14:33:27.664367: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.560	    0.005	    0.004	  0.001%	 95.939%	     0.000	        1	MiddleAndRPN_/conv5/gamma
+2018-03-20 14:33:27.664376: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.556	    0.007	    0.004	  0.001%	 95.941%	     0.000	        1	MiddleAndRPN_/conv10/kernel
+2018-03-20 14:33:27.664386: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.551	    0.006	    0.003	  0.001%	 95.942%	     0.000	        1	MiddleAndRPN_/conv10/bias
+2018-03-20 14:33:27.664395: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.546	    0.008	    0.003	  0.001%	 95.943%	     0.000	        1	MiddleAndRPN_/conv10/gamma
+2018-03-20 14:33:27.664405: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.542	    0.006	    0.003	  0.001%	 95.944%	     0.000	        1	MiddleAndRPN_/conv10/beta
+2018-03-20 14:33:27.664415: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.538	    0.006	    0.004	  0.001%	 95.945%	     0.000	        1	MiddleAndRPN_/conv5/beta
+2018-03-20 14:33:27.664424: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.533	    0.010	    0.004	  0.001%	 95.946%	     0.000	        1	MiddleAndRPN_/conv20/kernel
+2018-03-20 14:33:27.664438: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.528	    0.006	    0.004	  0.001%	 95.948%	     0.000	        1	MiddleAndRPN_/conv11/kernel
+2018-03-20 14:33:27.664448: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.523	    0.006	    0.004	  0.001%	 95.949%	     0.000	        1	MiddleAndRPN_/conv11/bias
+2018-03-20 14:33:27.664458: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.518	    0.009	    0.003	  0.001%	 95.950%	     0.000	        1	MiddleAndRPN_/conv11/gamma
+2018-03-20 14:33:27.664467: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.514	    0.005	    0.003	  0.001%	 95.951%	     0.000	        1	MiddleAndRPN_/conv11/beta
+2018-03-20 14:33:27.664477: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.509	    0.006	    0.004	  0.001%	 95.952%	     0.000	        1	MiddleAndRPN_/conv12/kernel
+2018-03-20 14:33:27.664486: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.458	    0.007	    0.005	  0.002%	 95.954%	     0.000	        1	MiddleAndRPN_/conv12/bias
+2018-03-20 14:33:27.664496: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.452	    0.005	    0.003	  0.001%	 95.955%	     0.000	        1	MiddleAndRPN_/conv12/gamma
+2018-03-20 14:33:27.664506: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.447	    0.005	    0.004	  0.001%	 95.956%	     0.000	        1	MiddleAndRPN_/conv12/beta
+2018-03-20 14:33:27.664515: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.442	    0.007	    0.004	  0.001%	 95.958%	     0.000	        1	MiddleAndRPN_/conv6/kernel
+2018-03-20 14:33:27.664525: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.437	    0.006	    0.004	  0.001%	 95.959%	     0.000	        1	MiddleAndRPN_/conv13/kernel
+2018-03-20 14:33:27.664534: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.432	    0.008	    0.004	  0.001%	 95.960%	     0.000	        1	MiddleAndRPN_/conv13/bias
+2018-03-20 14:33:27.664544: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.427	    0.005	    0.003	  0.001%	 95.961%	     0.000	        1	MiddleAndRPN_/conv13/gamma
+2018-03-20 14:33:27.664553: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.423	    0.005	    0.003	  0.001%	 95.963%	     0.000	        1	MiddleAndRPN_/conv13/beta
+2018-03-20 14:33:27.664563: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.418	    0.010	    0.004	  0.001%	 95.964%	     0.000	        1	MiddleAndRPN_/conv6/bias
+2018-03-20 14:33:27.664573: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.413	    0.006	    0.003	  0.001%	 95.965%	     0.000	        1	MiddleAndRPN_/conv6/gamma
+2018-03-20 14:33:27.664582: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.409	    0.006	    0.004	  0.001%	 95.966%	     0.000	        1	MiddleAndRPN_/deconv2/bias
+2018-03-20 14:33:27.664592: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.404	    0.008	    0.003	  0.001%	 95.967%	     0.000	        1	MiddleAndRPN_/deconv2/gamma
+2018-03-20 14:33:27.664601: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.400	    0.005	    0.003	  0.001%	 95.969%	     0.000	        1	MiddleAndRPN_/deconv2/beta
+2018-03-20 14:33:27.664611: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.395	    0.006	    0.004	  0.001%	 95.970%	     0.000	        1	MiddleAndRPN_/conv6/beta
+2018-03-20 14:33:27.664621: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.391	    0.014	    0.004	  0.001%	 95.971%	     0.000	        1	MiddleAndRPN_/conv20/bias
+2018-03-20 14:33:27.664630: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.386	    0.006	    0.004	  0.001%	 95.972%	     0.000	        1	MiddleAndRPN_/deconv1/kernel
+2018-03-20 14:33:27.664644: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.381	    0.006	    0.004	  0.001%	 95.974%	     0.000	        1	MiddleAndRPN_/conv3/beta
+2018-03-20 14:33:27.664654: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.376	    0.009	    0.004	  0.001%	 95.975%	     0.000	        1	MiddleAndRPN_/conv2/beta
+2018-03-20 14:33:27.664664: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.371	    0.006	    0.004	  0.001%	 95.976%	     0.000	        1	MiddleAndRPN_/conv1/beta
+2018-03-20 14:33:27.664673: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.366	    0.006	    0.004	  0.001%	 95.977%	     0.000	        1	VFE-2/beta
+2018-03-20 14:33:27.664683: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.361	    0.016	    0.004	  0.001%	 95.979%	     0.000	        1	gpu_0/VFE-2/Tensordot/concat_1
+2018-03-20 14:33:27.664693: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.357	    0.005	    0.003	  0.001%	 95.980%	     0.000	        1	gpu_0/VFE-2/Tensordot/Const
+2018-03-20 14:33:27.664702: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.352	    0.006	    0.004	  0.001%	 95.981%	     0.000	        1	gpu_0/VFE-2/Tensordot/Reshape_1
+2018-03-20 14:33:27.664712: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.347	    0.011	    0.004	  0.001%	 95.982%	     0.000	        1	VFE-1/beta
+2018-03-20 14:33:27.664722: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.343	    0.005	    0.003	  0.001%	 95.984%	     0.000	        1	MiddleAndRPN_/conv20/gamma
+2018-03-20 14:33:27.664731: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.338	    0.007	    0.004	  0.001%	 95.985%	     0.000	        1	gpu_0/VFE-1/Tensordot/Reshape_1
+2018-03-20 14:33:27.664741: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.333	    0.009	    0.003	  0.001%	 95.986%	     0.000	        1	gpu_0/VFE-1/Tensordot/add_1
+2018-03-20 14:33:27.664750: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.328	    0.004	    0.003	  0.001%	 95.987%	     0.000	        1	gpu_0/VFE-1/Tensordot/Const_2
+2018-03-20 14:33:27.664760: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.324	    0.005	    0.003	  0.001%	 95.988%	     0.000	        1	gpu_0/VFE-1/Tensordot/concat_2/axis
+2018-03-20 14:33:27.664770: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.320	    0.011	    0.003	  0.001%	 95.989%	     0.000	        1	VFE-1/bias
+2018-03-20 14:33:27.664780: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.316	    0.005	    0.003	  0.001%	 95.990%	     0.000	        1	gpu_0/VFE-1/moments/mean/reduction_indices
+2018-03-20 14:33:27.664789: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.311	    0.007	    0.004	  0.001%	 95.991%	     0.000	        1	MiddleAndRPN_/conv7/kernel
+2018-03-20 14:33:27.664799: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.306	    0.006	    0.003	  0.001%	 95.993%	     0.000	        1	gpu_0/VFE-1/batchnorm/add/y
+2018-03-20 14:33:27.664809: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.301	    0.006	    0.003	  0.001%	 95.994%	     0.000	        1	VFE-1/gamma
+2018-03-20 14:33:27.664818: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.296	    0.005	    0.003	  0.001%	 95.995%	     0.000	        1	gpu_0/Max_1/reduction_indices
+2018-03-20 14:33:27.664828: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.292	    0.009	    0.003	  0.001%	 95.996%	     0.000	        1	gpu_0/Tile/multiples
+2018-03-20 14:33:27.664842: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.288	    0.005	    0.003	  0.001%	 95.997%	     0.000	        1	gpu_0/concat/axis
+2018-03-20 14:33:27.664852: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.284	    0.005	    0.003	  0.001%	 95.998%	     0.000	        1	gpu_0/Tile_1/multiples
+2018-03-20 14:33:27.664861: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.280	    0.008	    0.003	  0.001%	 95.999%	     0.000	        1	gpu_0/VFE-2/Tensordot/Const_2
+2018-03-20 14:33:27.664871: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.276	    0.006	    0.004	  0.001%	 96.000%	     0.000	        1	MiddleAndRPN_/conv7/bias
+2018-03-20 14:33:27.664881: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.272	    0.006	    0.004	  0.001%	 96.001%	     0.000	        1	VFE-2/bias
+2018-03-20 14:33:27.664890: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.267	    0.010	    0.003	  0.001%	 96.002%	     0.000	        1	MiddleAndRPN_/conv7/gamma
+2018-03-20 14:33:27.664900: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.263	    0.006	    0.005	  0.002%	 96.004%	     0.000	        1	MiddleAndRPN_/conv7/beta
+2018-03-20 14:33:27.664910: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.257	    0.006	    0.004	  0.001%	 96.005%	     0.000	        1	VFE-2/gamma
+2018-03-20 14:33:27.664919: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.252	    0.010	    0.003	  0.001%	 96.006%	     0.000	        1	MiddleAndRPN_/conv20/beta
+2018-03-20 14:33:27.664929: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.248	    0.005	    0.003	  0.001%	 96.007%	     0.000	        1	gpu_0/NotEqual/y
+2018-03-20 14:33:27.664938: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.244	    0.005	    0.003	  0.001%	 96.008%	     0.000	        1	gpu_0/Tile_3/multiples
+2018-03-20 14:33:27.664948: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.239	    0.010	    0.004	  0.001%	 96.010%	     0.000	        1	gpu_0/ScatterNd/shape
+2018-03-20 14:33:27.664958: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.234	    0.004	    0.003	  0.001%	 96.011%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/Pad/paddings
+2018-03-20 14:33:27.664967: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.231	    0.008	    0.005	  0.002%	 96.012%	     0.000	        1	MiddleAndRPN_/conv1/kernel
+2018-03-20 14:33:27.664977: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.225	    0.006	    0.003	  0.001%	 96.013%	     0.000	        1	MiddleAndRPN_/conv1/bias
+2018-03-20 14:33:27.664987: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.220	    0.005	    0.003	  0.001%	 96.014%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/moments/mean/reduction_indices
+2018-03-20 14:33:27.664996: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.216	    0.006	    0.003	  0.001%	 96.016%	     0.000	        1	MiddleAndRPN_/conv1/gamma
+2018-03-20 14:33:27.665006: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.211	    0.005	    0.003	  0.001%	 96.016%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/Pad/paddings
+2018-03-20 14:33:27.665016: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.207	    0.007	    0.004	  0.001%	 96.018%	     0.000	        1	MiddleAndRPN_/conv2/kernel
+2018-03-20 14:33:27.665025: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.202	    0.010	    0.003	  0.001%	 96.019%	     0.000	        1	MiddleAndRPN_/conv2/bias
+2018-03-20 14:33:27.665035: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.197	    0.005	    0.003	  0.001%	 96.020%	     0.000	        1	MiddleAndRPN_/deconv1/bias
+2018-03-20 14:33:27.665048: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.193	    0.006	    0.003	  0.001%	 96.021%	     0.000	        1	MiddleAndRPN_/deconv1/gamma
+2018-03-20 14:33:27.665058: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.189	    0.010	    0.004	  0.001%	 96.022%	     0.000	        1	MiddleAndRPN_/conv2/gamma
+2018-03-20 14:33:27.665068: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.184	    0.006	    0.003	  0.001%	 96.023%	     0.000	        1	MiddleAndRPN_/deconv1/beta
+2018-03-20 14:33:27.665077: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.180	    0.006	    0.004	  0.001%	 96.025%	     0.000	        1	MiddleAndRPN_/conv3/kernel
+2018-03-20 14:33:27.665087: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.175	    0.010	    0.003	  0.001%	 96.026%	     0.000	        1	MiddleAndRPN_/conv3/bias
+2018-03-20 14:33:27.665097: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.171	    0.004	    0.003	  0.001%	 96.027%	     0.000	        1	gpu_0/MiddleAndRPN_/deconv1/conv2d_transpose-0-LayoutOptimizer
+2018-03-20 14:33:27.665107: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.166	    0.004	    0.003	  0.001%	 96.028%	     0.000	        1	PermConstNHWCToNCHW-LayoutOptimizer
+2018-03-20 14:33:27.665116: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.161	    0.005	    0.003	  0.001%	 96.029%	     0.000	        1	PermConstNCHWToNHWC-LayoutOptimizer
+2018-03-20 14:33:27.665126: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.157	    0.007	    0.004	  0.001%	 96.030%	     0.000	        1	gpu_0/MiddleAndRPN_/conv5/Pad-1-LayoutOptimizer
+2018-03-20 14:33:27.665136: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	   -0.152	    0.010	    0.003	  0.001%	 96.031%	     0.000	        1	gpu_0/MiddleAndRPN_/Pad-1-LayoutOptimizer
+2018-03-20 14:33:27.665145: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Shape	    2.425	    0.015	    0.023	  0.008%	 96.039%	     0.012	        1	gpu_0/VFE-1/Tensordot/Shape
+2018-03-20 14:33:27.665155: I tensorflow/core/util/stat_summarizer.cc:468] 	               Transpose	    2.426	    0.040	    0.023	  0.008%	 96.046%	     0.000	        1	gpu_0/VFE-1/Tensordot/transpose
+2018-03-20 14:33:27.665165: I tensorflow/core/util/stat_summarizer.cc:468] 	                ConcatV2	    2.553	    0.022	    0.030	  0.010%	 96.056%	     0.012	        1	gpu_0/VFE-1/Tensordot/concat_2
+2018-03-20 14:33:27.665175: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Prod	    2.837	    0.011	    0.016	  0.005%	 96.062%	     0.000	        1	gpu_0/VFE-1/Tensordot/Prod_1
+2018-03-20 14:33:27.665184: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Max	    2.421	    0.197	    0.077	  0.026%	 96.088%	   151.040	        1	gpu_0/Max
+2018-03-20 14:33:27.665194: I tensorflow/core/util/stat_summarizer.cc:468] 	                NotEqual	    2.511	    0.151	    0.064	  0.022%	 96.110%	    37.888	        1	gpu_0/NotEqual
+2018-03-20 14:33:27.665204: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Prod	    2.859	    0.046	    0.077	  0.026%	 96.136%	     0.256	        1	gpu_0/VFE-1/Tensordot/Prod
+2018-03-20 14:33:27.665213: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Tile	    2.581	    0.101	    0.056	  0.019%	 96.155%	  1208.320	        1	gpu_0/Tile_1
+2018-03-20 14:33:27.665223: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Tile	    2.645	    0.051	    0.051	  0.017%	 96.172%	  4833.280	        1	gpu_0/Tile_3
+2018-03-20 14:33:27.665232: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Cast	    2.702	    0.052	    0.052	  0.018%	 96.189%	  4833.280	        1	gpu_0/Cast
+2018-03-20 14:33:27.665242: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Pack	    3.489	    0.021	    0.031	  0.010%	 96.200%	     0.008	        1	gpu_0/VFE-1/Tensordot/stack
+2018-03-20 14:33:27.665255: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Reshape	    3.525	    0.007	    0.010	  0.003%	 96.203%	     0.000	        1	gpu_0/VFE-1/Tensordot/Reshape
+2018-03-20 14:33:27.665266: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Cast	    2.760	    0.040	    0.044	  0.015%	 96.218%	 19333.120	        1	gpu_0/Cast_1
+2018-03-20 14:33:27.665275: I tensorflow/core/util/stat_summarizer.cc:468] 	                  MatMul	    3.538	    0.064	    0.075	  0.025%	 96.243%	  2416.640	        1	gpu_0/VFE-1/Tensordot/MatMul
+2018-03-20 14:33:27.665285: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Reshape	    3.624	    0.007	    0.009	  0.003%	 96.247%	     0.000	        1	gpu_0/VFE-1/Tensordot
+2018-03-20 14:33:27.665295: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	    3.636	    0.032	    0.043	  0.015%	 96.261%	     0.000	        1	gpu_0/VFE-1/BiasAdd
+2018-03-20 14:33:27.665304: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	    3.683	    0.027	    0.032	  0.011%	 96.272%	     0.000	        1	gpu_0/VFE-1/Relu
+2018-03-20 14:33:27.665314: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Mean	    3.718	    0.058	    0.065	  0.022%	 96.294%	     2.304	        1	gpu_0/VFE-1/moments/mean
+2018-03-20 14:33:27.665323: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Squeeze	    3.787	    0.010	    0.011	  0.004%	 96.298%	     0.000	        1	gpu_0/VFE-1/moments/Squeeze
+2018-03-20 14:33:27.665333: I tensorflow/core/util/stat_summarizer.cc:468] 	       SquaredDifference	    3.801	    0.032	    0.039	  0.013%	 96.311%	  3814.400	        1	gpu_0/VFE-1/moments/SquaredDifference
+2018-03-20 14:33:27.665343: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Mean	    3.847	    0.041	    0.056	  0.019%	 96.330%	     2.304	        1	gpu_0/VFE-1/moments/variance
+2018-03-20 14:33:27.665352: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Squeeze	    3.906	    0.007	    0.009	  0.003%	 96.333%	     0.000	        1	gpu_0/VFE-1/moments/Squeeze_1
+2018-03-20 14:33:27.665362: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Add	    3.917	    0.030	    0.033	  0.011%	 96.344%	     0.000	        1	gpu_0/VFE-1/batchnorm/add
+2018-03-20 14:33:27.665372: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Rsqrt	    3.955	    0.024	    0.028	  0.009%	 96.353%	     0.000	        1	gpu_0/VFE-1/batchnorm/Rsqrt
+2018-03-20 14:33:27.665381: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	    3.986	    0.028	    0.030	  0.010%	 96.364%	     0.000	        1	gpu_0/VFE-1/batchnorm/mul
+2018-03-20 14:33:27.665391: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	    4.019	    0.020	    0.026	  0.009%	 96.373%	     0.000	        1	gpu_0/VFE-1/batchnorm/mul_2
+2018-03-20 14:33:27.665400: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	    4.048	    0.028	    0.031	  0.011%	 96.383%	     0.000	        1	gpu_0/VFE-1/batchnorm/mul_1
+2018-03-20 14:33:27.665410: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Sub	    4.082	    0.028	    0.032	  0.011%	 96.394%	     0.000	        1	gpu_0/VFE-1/batchnorm/sub
+2018-03-20 14:33:27.665420: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Add	    4.117	    0.028	    0.032	  0.011%	 96.405%	     0.000	        1	gpu_0/VFE-1/batchnorm/add_1
+2018-03-20 14:33:27.665429: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Max	    4.152	    0.030	    0.038	  0.013%	 96.417%	   120.832	        1	gpu_0/Max_1
+2018-03-20 14:33:27.665439: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Tile	    4.198	    0.029	    0.038	  0.013%	 96.430%	  3814.400	        1	gpu_0/Tile
+2018-03-20 14:33:27.665448: I tensorflow/core/util/stat_summarizer.cc:468] 	                ConcatV2	    4.242	    0.043	    0.056	  0.019%	 96.449%	  4833.280	        1	gpu_0/concat
+2018-03-20 14:33:27.665462: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	    4.304	    0.024	    0.033	  0.011%	 96.460%	     0.000	        1	gpu_0/Mul
+2018-03-20 14:33:27.665472: I tensorflow/core/util/stat_summarizer.cc:468] 	               Transpose	    4.341	    0.006	    0.008	  0.003%	 96.463%	     0.000	        1	gpu_0/VFE-2/Tensordot/transpose
+2018-03-20 14:33:27.665482: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Shape	    4.352	    0.007	    0.010	  0.003%	 96.467%	     0.012	        1	gpu_0/VFE-2/Tensordot/Shape
+2018-03-20 14:33:27.665491: I tensorflow/core/util/stat_summarizer.cc:468] 	                ConcatV2	    4.469	    0.018	    0.023	  0.008%	 96.474%	     0.012	        1	gpu_0/VFE-2/Tensordot/concat_2
+2018-03-20 14:33:27.665501: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Prod	    4.626	    0.016	    0.016	  0.006%	 96.480%	     0.000	        1	gpu_0/VFE-2/Tensordot/Prod_1
+2018-03-20 14:33:27.665510: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Prod	    4.630	    0.117	    0.074	  0.025%	 96.505%	     0.256	        1	gpu_0/VFE-2/Tensordot/Prod
+2018-03-20 14:33:27.665520: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Pack	    4.832	    0.029	    0.027	  0.009%	 96.514%	     0.008	        1	gpu_0/VFE-2/Tensordot/stack
+2018-03-20 14:33:27.665530: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Reshape	    4.864	    0.013	    0.011	  0.004%	 96.518%	     0.000	        1	gpu_0/VFE-2/Tensordot/Reshape
+2018-03-20 14:33:27.665540: I tensorflow/core/util/stat_summarizer.cc:468] 	                  MatMul	    4.879	    0.076	    0.072	  0.024%	 96.542%	 11064.320	        1	gpu_0/VFE-2/Tensordot/MatMul
+2018-03-20 14:33:27.665549: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Reshape	    4.964	    0.011	    0.010	  0.003%	 96.546%	     0.000	        1	gpu_0/VFE-2/Tensordot
+2018-03-20 14:33:27.665559: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	    4.978	    0.057	    0.046	  0.016%	 96.561%	     0.000	        1	gpu_0/VFE-2/BiasAdd
+2018-03-20 14:33:27.665569: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	    5.028	    0.034	    0.033	  0.011%	 96.572%	     0.000	        1	gpu_0/VFE-2/Relu
+2018-03-20 14:33:27.665579: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Mean	    5.064	    0.077	    0.063	  0.021%	 96.594%	     8.448	        1	gpu_0/VFE-2/moments/mean
+2018-03-20 14:33:27.665588: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Squeeze	    5.131	    0.012	    0.011	  0.004%	 96.597%	     0.000	        1	gpu_0/VFE-2/moments/Squeeze
+2018-03-20 14:33:27.665598: I tensorflow/core/util/stat_summarizer.cc:468] 	                Identity	   16.310	    0.008	    0.008	  0.003%	 96.600%	     0.000	        1	concat_105
+2018-03-20 14:33:27.665608: I tensorflow/core/util/stat_summarizer.cc:468] 	               Transpose	   16.245	    0.073	    0.055	  0.019%	 96.619%	   287.744	        1	gpu_0/MiddleAndRPN_/Sigmoid-0-0-TransposeNCHWToNHWC-LayoutOptimizer
+2018-03-20 14:33:27.665617: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Sigmoid	   16.127	    0.034	    0.031	  0.011%	 96.629%	     0.000	        1	gpu_0/MiddleAndRPN_/Sigmoid
+2018-03-20 14:33:27.665627: I tensorflow/core/util/stat_summarizer.cc:468] 	                Identity	   16.117	    0.006	    0.006	  0.002%	 96.632%	     0.000	        1	concat_104
+2018-03-20 14:33:27.665637: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	   16.078	    0.036	    0.036	  0.012%	 96.644%	     0.000	        1	gpu_0/MiddleAndRPN_/conv20/Relu
+2018-03-20 14:33:27.665646: I tensorflow/core/util/stat_summarizer.cc:468] 	               Transpose	   16.023	    0.055	    0.047	  0.016%	 96.660%	  1971.200	        1	gpu_0/MiddleAndRPN_/conv21/FusedBatchNorm-0-0-TransposeNCHWToNHWC-LayoutOptimizer
+2018-03-20 14:33:27.665656: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	   15.931	    0.094	    0.086	  0.029%	 96.689%	     1.024	        1	gpu_0/MiddleAndRPN_/conv20/FusedBatchNorm
+2018-03-20 14:33:27.665670: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	   15.834	    0.095	    0.091	  0.031%	 96.719%	     1.024	        1	gpu_0/MiddleAndRPN_/conv21/FusedBatchNorm
+2018-03-20 14:33:27.665680: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	   15.802	    0.029	    0.028	  0.010%	 96.729%	     0.000	        1	gpu_0/MiddleAndRPN_/conv20/BiasAdd
+2018-03-20 14:33:27.665690: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	   15.761	    0.041	    0.038	  0.013%	 96.742%	     0.000	        1	gpu_0/MiddleAndRPN_/conv21/BiasAdd
+2018-03-20 14:33:27.665700: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	   15.619	    0.138	    0.133	  0.045%	 96.787%	   780.800	        1	gpu_0/MiddleAndRPN_/conv20/Conv2D
+2018-03-20 14:33:27.665709: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	   15.469	    0.165	    0.140	  0.047%	 96.834%	  4196.864	        1	gpu_0/MiddleAndRPN_/conv21/Conv2D
+2018-03-20 14:33:27.665719: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	   15.457	    0.009	    0.010	  0.003%	 96.838%	     0.000	        1	gpu_0/MiddleAndRPN_/conv21/Pad
+2018-03-20 14:33:27.665729: I tensorflow/core/util/stat_summarizer.cc:468] 	                ConcatV2	   15.346	    0.109	    0.098	  0.033%	 96.871%	108134.400	        1	gpu_0/MiddleAndRPN_/concat
+2018-03-20 14:33:27.665738: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	   15.307	    0.035	    0.036	  0.012%	 96.883%	     0.000	        1	gpu_0/MiddleAndRPN_/deconv3/Relu
+2018-03-20 14:33:27.665748: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	   15.205	    0.104	    0.096	  0.032%	 96.915%	     4.096	        1	gpu_0/MiddleAndRPN_/deconv3/FusedBatchNorm
+2018-03-20 14:33:27.665758: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	   15.147	    0.042	    0.054	  0.018%	 96.933%	     0.000	        1	gpu_0/MiddleAndRPN_/deconv3/BiasAdd
+2018-03-20 14:33:27.665768: I tensorflow/core/util/stat_summarizer.cc:468] 	     Conv2DBackpropInput	   14.961	    0.192	    0.173	  0.058%	 96.992%	 86390.784	        1	gpu_0/MiddleAndRPN_/deconv3/conv2d_transpose
+2018-03-20 14:33:27.665777: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	   14.950	    0.009	    0.008	  0.003%	 96.995%	     0.000	        1	gpu_0/MiddleAndRPN_/Pad_2
+2018-03-20 14:33:27.665787: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	   14.912	    0.043	    0.034	  0.011%	 97.006%	     0.000	        1	gpu_0/MiddleAndRPN_/conv19/Relu
+2018-03-20 14:33:27.665797: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	   14.808	    0.113	    0.098	  0.033%	 97.039%	     4.096	        1	gpu_0/MiddleAndRPN_/conv19/FusedBatchNorm
+2018-03-20 14:33:27.665806: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	   14.767	    0.039	    0.038	  0.013%	 97.052%	     0.000	        1	gpu_0/MiddleAndRPN_/conv19/BiasAdd
+2018-03-20 14:33:27.665816: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	   14.639	    0.126	    0.117	  0.040%	 97.092%	 11059.200	        1	gpu_0/MiddleAndRPN_/conv19/Conv2D
+2018-03-20 14:33:27.665826: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	   14.595	    0.037	    0.037	  0.012%	 97.104%	  2449.408	        1	gpu_0/MiddleAndRPN_/conv19/Pad
+2018-03-20 14:33:27.665835: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	   14.556	    0.038	    0.035	  0.012%	 97.116%	     0.000	        1	gpu_0/MiddleAndRPN_/conv18/Relu
+2018-03-20 14:33:27.665845: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	   14.456	    0.097	    0.094	  0.032%	 97.148%	     4.096	        1	gpu_0/MiddleAndRPN_/conv18/FusedBatchNorm
+2018-03-20 14:33:27.665855: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	   14.413	    0.047	    0.038	  0.013%	 97.161%	     0.000	        1	gpu_0/MiddleAndRPN_/conv18/BiasAdd
+2018-03-20 14:33:27.665873: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	   14.282	    0.120	    0.121	  0.041%	 97.202%	 11059.200	        1	gpu_0/MiddleAndRPN_/conv18/Conv2D
+2018-03-20 14:33:27.665883: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	   14.236	    0.037	    0.037	  0.013%	 97.214%	  2449.408	        1	gpu_0/MiddleAndRPN_/conv18/Pad
+2018-03-20 14:33:27.665893: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	   14.198	    0.037	    0.035	  0.012%	 97.226%	     0.000	        1	gpu_0/MiddleAndRPN_/conv17/Relu
+2018-03-20 14:33:27.665902: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	   14.096	    0.108	    0.097	  0.033%	 97.259%	     4.096	        1	gpu_0/MiddleAndRPN_/conv17/FusedBatchNorm
+2018-03-20 14:33:27.665912: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	   14.054	    0.049	    0.038	  0.013%	 97.272%	     0.000	        1	gpu_0/MiddleAndRPN_/conv17/BiasAdd
+2018-03-20 14:33:27.665922: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	   13.920	    0.127	    0.123	  0.042%	 97.313%	 11059.200	        1	gpu_0/MiddleAndRPN_/conv17/Conv2D
+2018-03-20 14:33:27.665931: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	   13.874	    0.047	    0.038	  0.013%	 97.326%	  2449.408	        1	gpu_0/MiddleAndRPN_/conv17/Pad
+2018-03-20 14:33:27.665941: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	   13.836	    0.034	    0.035	  0.012%	 97.338%	     0.000	        1	gpu_0/MiddleAndRPN_/conv16/Relu
+2018-03-20 14:33:27.665950: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	   13.735	    0.106	    0.095	  0.032%	 97.370%	     4.096	        1	gpu_0/MiddleAndRPN_/conv16/FusedBatchNorm
+2018-03-20 14:33:27.665960: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	   13.694	    0.039	    0.038	  0.013%	 97.383%	     0.000	        1	gpu_0/MiddleAndRPN_/conv16/BiasAdd
+2018-03-20 14:33:27.665970: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	   13.563	    0.141	    0.120	  0.041%	 97.423%	 11059.200	        1	gpu_0/MiddleAndRPN_/conv16/Conv2D
+2018-03-20 14:33:27.665980: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	   13.515	    0.041	    0.040	  0.014%	 97.437%	  2449.408	        1	gpu_0/MiddleAndRPN_/conv16/Pad
+2018-03-20 14:33:27.665989: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	   13.475	    0.044	    0.036	  0.012%	 97.449%	     0.000	        1	gpu_0/MiddleAndRPN_/conv15/Relu
+2018-03-20 14:33:27.665999: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	   13.372	    0.110	    0.097	  0.033%	 97.482%	     4.096	        1	gpu_0/MiddleAndRPN_/conv15/FusedBatchNorm
+2018-03-20 14:33:27.666008: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	   13.329	    0.044	    0.039	  0.013%	 97.495%	     0.000	        1	gpu_0/MiddleAndRPN_/conv15/BiasAdd
+2018-03-20 14:33:27.666018: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	   13.184	    0.172	    0.135	  0.045%	 97.540%	 11059.200	        1	gpu_0/MiddleAndRPN_/conv15/Conv2D
+2018-03-20 14:33:27.666028: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	   13.137	    0.038	    0.039	  0.013%	 97.554%	  2449.408	        1	gpu_0/MiddleAndRPN_/conv15/Pad
+2018-03-20 14:33:27.666037: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	   13.103	    0.039	    0.030	  0.010%	 97.564%	     0.000	        1	gpu_0/MiddleAndRPN_/deconv2/Relu
+2018-03-20 14:33:27.666047: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	   13.063	    0.035	    0.037	  0.012%	 97.576%	     0.000	        1	gpu_0/MiddleAndRPN_/conv14/Relu
+2018-03-20 14:33:27.666057: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	   12.970	    0.097	    0.088	  0.030%	 97.606%	     4.096	        1	gpu_0/MiddleAndRPN_/deconv2/FusedBatchNorm
+2018-03-20 14:33:27.666070: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	   12.863	    0.112	    0.100	  0.034%	 97.640%	     4.096	        1	gpu_0/MiddleAndRPN_/conv14/FusedBatchNorm
+2018-03-20 14:33:27.666080: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	   12.829	    0.029	    0.030	  0.010%	 97.650%	     0.000	        1	gpu_0/MiddleAndRPN_/deconv2/BiasAdd
+2018-03-20 14:33:27.666090: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	   12.783	    0.047	    0.043	  0.014%	 97.664%	     0.000	        1	gpu_0/MiddleAndRPN_/conv14/BiasAdd
+2018-03-20 14:33:27.666100: I tensorflow/core/util/stat_summarizer.cc:468] 	     Conv2DBackpropInput	   12.579	    0.211	    0.190	  0.064%	 97.729%	 75059.200	        1	gpu_0/MiddleAndRPN_/deconv2/conv2d_transpose
+2018-03-20 14:33:27.666110: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	   12.439	    0.138	    0.132	  0.045%	 97.773%	  5698.560	        1	gpu_0/MiddleAndRPN_/conv14/Conv2D
+2018-03-20 14:33:27.666119: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	   12.428	    0.009	    0.009	  0.003%	 97.776%	     0.000	        1	gpu_0/MiddleAndRPN_/Pad_1
+2018-03-20 14:33:27.666129: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	   12.384	    0.041	    0.035	  0.012%	 97.788%	  4700.160	        1	gpu_0/MiddleAndRPN_/conv14/Pad
+2018-03-20 14:33:27.666139: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	   12.346	    0.037	    0.036	  0.012%	 97.800%	     0.000	        1	gpu_0/MiddleAndRPN_/conv13/Relu
+2018-03-20 14:33:27.666148: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	   12.241	    0.102	    0.097	  0.033%	 97.833%	     2.048	        1	gpu_0/MiddleAndRPN_/conv13/FusedBatchNorm
+2018-03-20 14:33:27.666158: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	   12.199	    0.041	    0.039	  0.013%	 97.846%	     0.000	        1	gpu_0/MiddleAndRPN_/conv13/BiasAdd
+2018-03-20 14:33:27.666168: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	   12.063	    0.124	    0.124	  0.042%	 97.888%	 10649.600	        1	gpu_0/MiddleAndRPN_/conv13/Conv2D
+2018-03-20 14:33:27.666178: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	   12.017	    0.045	    0.039	  0.013%	 97.901%	  4700.160	        1	gpu_0/MiddleAndRPN_/conv13/Pad
+2018-03-20 14:33:27.666187: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	   11.977	    0.035	    0.036	  0.012%	 97.913%	     0.000	        1	gpu_0/MiddleAndRPN_/conv12/Relu
+2018-03-20 14:33:27.666197: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	   11.874	    0.108	    0.097	  0.033%	 97.946%	     2.048	        1	gpu_0/MiddleAndRPN_/conv12/FusedBatchNorm
+2018-03-20 14:33:27.666206: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	   11.832	    0.039	    0.038	  0.013%	 97.959%	     0.000	        1	gpu_0/MiddleAndRPN_/conv12/BiasAdd
+2018-03-20 14:33:27.666216: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	   11.699	    0.142	    0.122	  0.041%	 98.000%	 10649.600	        1	gpu_0/MiddleAndRPN_/conv12/Conv2D
+2018-03-20 14:33:27.666226: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	   11.651	    0.039	    0.039	  0.013%	 98.013%	  4700.160	        1	gpu_0/MiddleAndRPN_/conv12/Pad
+2018-03-20 14:33:27.666235: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	   11.611	    0.044	    0.037	  0.012%	 98.026%	     0.000	        1	gpu_0/MiddleAndRPN_/conv11/Relu
+2018-03-20 14:33:27.666245: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	   11.507	    0.103	    0.097	  0.033%	 98.058%	     2.048	        1	gpu_0/MiddleAndRPN_/conv11/FusedBatchNorm
+2018-03-20 14:33:27.666258: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	   11.466	    0.037	    0.037	  0.013%	 98.071%	     0.000	        1	gpu_0/MiddleAndRPN_/conv11/BiasAdd
+2018-03-20 14:33:27.666268: I tensorflow/core/util/stat_summarizer.cc:468] 	       SquaredDifference	    5.144	    0.045	    0.038	  0.013%	 98.084%	  9666.560	        1	gpu_0/VFE-2/moments/SquaredDifference
+2018-03-20 14:33:27.666278: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Mean	    5.191	    0.069	    0.060	  0.020%	 98.104%	     8.448	        1	gpu_0/VFE-2/moments/variance
+2018-03-20 14:33:27.666288: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Squeeze	    5.255	    0.011	    0.009	  0.003%	 98.107%	     0.000	        1	gpu_0/VFE-2/moments/Squeeze_1
+2018-03-20 14:33:27.666297: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Add	    5.267	    0.046	    0.034	  0.012%	 98.119%	     0.000	        1	gpu_0/VFE-2/batchnorm/add
+2018-03-20 14:33:27.666307: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Rsqrt	    5.304	    0.035	    0.028	  0.010%	 98.128%	     0.000	        1	gpu_0/VFE-2/batchnorm/Rsqrt
+2018-03-20 14:33:27.666317: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	    5.335	    0.033	    0.031	  0.010%	 98.139%	     0.000	        1	gpu_0/VFE-2/batchnorm/mul
+2018-03-20 14:33:27.666326: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	    5.369	    0.032	    0.027	  0.009%	 98.148%	     0.000	        1	gpu_0/VFE-2/batchnorm/mul_2
+2018-03-20 14:33:27.666336: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	    5.399	    0.035	    0.032	  0.011%	 98.159%	     0.000	        1	gpu_0/VFE-2/batchnorm/mul_1
+2018-03-20 14:33:27.666345: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Sub	    5.434	    0.041	    0.031	  0.011%	 98.169%	     0.000	        1	gpu_0/VFE-2/batchnorm/sub
+2018-03-20 14:33:27.666355: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Add	    5.468	    0.039	    0.032	  0.011%	 98.180%	     0.000	        1	gpu_0/VFE-2/batchnorm/add_1
+2018-03-20 14:33:27.666364: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Max	    5.504	    0.042	    0.037	  0.013%	 98.193%	   483.328	        1	gpu_0/Max_2
+2018-03-20 14:33:27.666374: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Tile	    5.550	    0.045	    0.041	  0.014%	 98.207%	  9666.560	        1	gpu_0/Tile_2
+2018-03-20 14:33:27.666384: I tensorflow/core/util/stat_summarizer.cc:468] 	                ConcatV2	    5.597	    0.059	    0.055	  0.019%	 98.225%	 19333.120	        1	gpu_0/concat_1
+2018-03-20 14:33:27.666393: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	    5.660	    0.051	    0.035	  0.012%	 98.237%	     0.000	        1	gpu_0/Mul_1
+2018-03-20 14:33:27.666403: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Max	    5.699	    0.043	    0.037	  0.013%	 98.250%	  1057.280	        1	gpu_0/Max_3
+2018-03-20 14:33:27.666413: I tensorflow/core/util/stat_summarizer.cc:468] 	               ScatterNd	    5.743	    0.082	    0.067	  0.023%	 98.272%	720896.000	        1	gpu_0/ScatterNd
+2018-03-20 14:33:27.666422: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	    5.820	    0.051	    0.040	  0.014%	 98.286%	874340.352	        1	gpu_0/MiddleAndRPN_/conv1/Pad
+2018-03-20 14:33:27.666432: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv3D	    5.868	    0.323	    0.267	  0.090%	 98.376%	1248369.408	        1	gpu_0/MiddleAndRPN_/conv1/Conv3D
+2018-03-20 14:33:27.666442: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	    6.147	    0.044	    0.038	  0.013%	 98.389%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/BiasAdd
+2018-03-20 14:33:27.666451: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Mean	    6.189	    0.068	    0.060	  0.020%	 98.409%	     8.448	        1	gpu_0/MiddleAndRPN_/conv1/moments/mean
+2018-03-20 14:33:27.666465: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Squeeze	    6.253	    0.012	    0.012	  0.004%	 98.413%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/moments/Squeeze
+2018-03-20 14:33:27.666475: I tensorflow/core/util/stat_summarizer.cc:468] 	       SquaredDifference	    6.268	    0.077	    0.040	  0.014%	 98.427%	180224.000	        1	gpu_0/MiddleAndRPN_/conv1/moments/SquaredDifference
+2018-03-20 14:33:27.666485: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Mean	    6.318	    0.065	    0.057	  0.019%	 98.446%	     8.448	        1	gpu_0/MiddleAndRPN_/conv1/moments/variance
+2018-03-20 14:33:27.666495: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Squeeze	    6.379	    0.011	    0.010	  0.003%	 98.450%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/moments/Squeeze_1
+2018-03-20 14:33:27.666504: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Add	    6.392	    0.039	    0.034	  0.012%	 98.461%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/batchnorm/add
+2018-03-20 14:33:27.666514: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Rsqrt	    6.430	    0.041	    0.028	  0.009%	 98.471%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/batchnorm/Rsqrt
+2018-03-20 14:33:27.666524: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	    6.460	    0.035	    0.029	  0.010%	 98.481%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/batchnorm/mul
+2018-03-20 14:33:27.666533: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	    6.493	    0.030	    0.027	  0.009%	 98.490%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/batchnorm/mul_2
+2018-03-20 14:33:27.666543: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	    6.523	    0.042	    0.034	  0.011%	 98.501%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/batchnorm/mul_1
+2018-03-20 14:33:27.666553: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Sub	    6.561	    0.035	    0.032	  0.011%	 98.512%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/batchnorm/sub
+2018-03-20 14:33:27.666562: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Add	    6.597	    0.047	    0.034	  0.012%	 98.524%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/batchnorm/add_1
+2018-03-20 14:33:27.666572: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	    6.635	    0.032	    0.032	  0.011%	 98.534%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/Relu
+2018-03-20 14:33:27.666582: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	    6.670	    0.048	    0.035	  0.012%	 98.546%	182154.240	        1	gpu_0/MiddleAndRPN_/conv2/Pad
+2018-03-20 14:33:27.666591: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv3D	    6.715	    0.247	    0.213	  0.072%	 98.618%	478573.824	        1	gpu_0/MiddleAndRPN_/conv2/Conv3D
+2018-03-20 14:33:27.666601: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	    6.939	    0.042	    0.036	  0.012%	 98.631%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/BiasAdd
+2018-03-20 14:33:27.666611: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Mean	    6.979	    0.064	    0.061	  0.021%	 98.651%	     8.448	        1	gpu_0/MiddleAndRPN_/conv2/moments/mean
+2018-03-20 14:33:27.666620: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Squeeze	    7.044	    0.020	    0.011	  0.004%	 98.655%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/moments/Squeeze
+2018-03-20 14:33:27.666630: I tensorflow/core/util/stat_summarizer.cc:468] 	       SquaredDifference	    7.058	    0.043	    0.040	  0.013%	 98.668%	108134.400	        1	gpu_0/MiddleAndRPN_/conv2/moments/SquaredDifference
+2018-03-20 14:33:27.666640: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Mean	    7.107	    0.077	    0.061	  0.021%	 98.689%	     8.448	        1	gpu_0/MiddleAndRPN_/conv2/moments/variance
+2018-03-20 14:33:27.666649: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Squeeze	    7.173	    0.010	    0.010	  0.003%	 98.692%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/moments/Squeeze_1
+2018-03-20 14:33:27.666665: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Add	    7.185	    0.043	    0.034	  0.011%	 98.704%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/batchnorm/add
+2018-03-20 14:33:27.666675: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Rsqrt	    7.222	    0.033	    0.027	  0.009%	 98.713%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/batchnorm/Rsqrt
+2018-03-20 14:33:27.666684: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	    7.253	    0.031	    0.029	  0.010%	 98.723%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/batchnorm/mul
+2018-03-20 14:33:27.666694: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	    7.284	    0.039	    0.027	  0.009%	 98.732%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/batchnorm/mul_2
+2018-03-20 14:33:27.666704: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	    7.315	    0.035	    0.033	  0.011%	 98.743%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/batchnorm/mul_1
+2018-03-20 14:33:27.666713: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Sub	    7.351	    0.041	    0.032	  0.011%	 98.754%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/batchnorm/sub
+2018-03-20 14:33:27.666723: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Add	    7.386	    0.043	    0.034	  0.011%	 98.765%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/batchnorm/add_1
+2018-03-20 14:33:27.666733: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	    7.424	    0.031	    0.029	  0.010%	 98.775%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/Relu
+2018-03-20 14:33:27.666742: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	    7.456	    0.041	    0.034	  0.011%	 98.787%	182154.240	        1	gpu_0/MiddleAndRPN_/conv3/Pad
+2018-03-20 14:33:27.666752: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv3D	    7.499	    0.238	    0.208	  0.070%	 98.857%	367458.048	        1	gpu_0/MiddleAndRPN_/conv3/Conv3D
+2018-03-20 14:33:27.666762: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	    7.718	    0.040	    0.036	  0.012%	 98.869%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/BiasAdd
+2018-03-20 14:33:27.666772: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Mean	    7.759	    0.073	    0.058	  0.020%	 98.889%	     8.448	        1	gpu_0/MiddleAndRPN_/conv3/moments/mean
+2018-03-20 14:33:27.666781: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Squeeze	    7.821	    0.012	    0.011	  0.004%	 98.893%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/moments/Squeeze
+2018-03-20 14:33:27.666791: I tensorflow/core/util/stat_summarizer.cc:468] 	       SquaredDifference	    7.834	    0.043	    0.038	  0.013%	 98.905%	 72089.600	        1	gpu_0/MiddleAndRPN_/conv3/moments/SquaredDifference
+2018-03-20 14:33:27.666801: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Mean	    7.881	    0.065	    0.058	  0.020%	 98.925%	     8.448	        1	gpu_0/MiddleAndRPN_/conv3/moments/variance
+2018-03-20 14:33:27.666810: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Squeeze	    7.944	    0.010	    0.010	  0.003%	 98.928%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/moments/Squeeze_1
+2018-03-20 14:33:27.666820: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Add	    7.956	    0.044	    0.034	  0.011%	 98.940%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/batchnorm/add
+2018-03-20 14:33:27.666830: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Rsqrt	    7.994	    0.030	    0.028	  0.010%	 98.949%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/batchnorm/Rsqrt
+2018-03-20 14:33:27.666839: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	    8.025	    0.038	    0.029	  0.010%	 98.959%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/batchnorm/mul
+2018-03-20 14:33:27.666853: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	    8.057	    0.033	    0.028	  0.009%	 98.969%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/batchnorm/mul_2
+2018-03-20 14:33:27.666863: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	    8.089	    0.035	    0.032	  0.011%	 98.980%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/batchnorm/mul_1
+2018-03-20 14:33:27.666873: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Sub	    8.125	    0.036	    0.032	  0.011%	 98.990%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/batchnorm/sub
+2018-03-20 14:33:27.666882: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Add	    8.161	    0.036	    0.034	  0.011%	 99.002%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/batchnorm/add_1
+2018-03-20 14:33:27.666892: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	    8.198	    0.045	    0.031	  0.011%	 99.012%	     0.000	        1	gpu_0/MiddleAndRPN_/conv3/Relu
+2018-03-20 14:33:27.666902: I tensorflow/core/util/stat_summarizer.cc:468] 	               Transpose	    8.233	    0.053	    0.042	  0.014%	 99.027%	 72089.600	        1	gpu_0/MiddleAndRPN_/transpose
+2018-03-20 14:33:27.666911: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Reshape	    8.284	    0.017	    0.009	  0.003%	 99.030%	     0.000	        1	gpu_0/MiddleAndRPN_/Reshape
+2018-03-20 14:33:27.666921: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	    8.297	    0.048	    0.041	  0.014%	 99.044%	 72861.696	        1	gpu_0/MiddleAndRPN_/conv4/Pad
+2018-03-20 14:33:27.666931: I tensorflow/core/util/stat_summarizer.cc:468] 	               Transpose	    8.347	    0.054	    0.041	  0.014%	 99.058%	144179.200	        1	gpu_0/MiddleAndRPN_/conv4/Conv2D-0-TransposeNHWCToNCHW-LayoutOptimizer
+2018-03-20 14:33:27.666941: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	    8.396	    0.238	    0.140	  0.047%	 99.105%	 36846.080	        1	gpu_0/MiddleAndRPN_/conv4/Conv2D
+2018-03-20 14:33:27.666950: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	    8.547	    0.047	    0.040	  0.014%	 99.119%	     0.000	        1	gpu_0/MiddleAndRPN_/conv4/BiasAdd
+2018-03-20 14:33:27.666960: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	    8.590	    0.117	    0.101	  0.034%	 99.153%	     2.048	        1	gpu_0/MiddleAndRPN_/conv4/FusedBatchNorm
+2018-03-20 14:33:27.666970: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	    8.698	    0.043	    0.037	  0.012%	 99.165%	     0.000	        1	gpu_0/MiddleAndRPN_/conv4/Relu
+2018-03-20 14:33:27.666979: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	    8.739	    0.046	    0.039	  0.013%	 99.178%	 18409.472	        1	gpu_0/MiddleAndRPN_/conv5/Pad
+2018-03-20 14:33:27.666989: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	    8.787	    0.134	    0.125	  0.042%	 99.220%	 37683.200	        1	gpu_0/MiddleAndRPN_/conv5/Conv2D
+2018-03-20 14:33:27.666999: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	    8.924	    0.049	    0.039	  0.013%	 99.234%	     0.000	        1	gpu_0/MiddleAndRPN_/conv5/BiasAdd
+2018-03-20 14:33:27.667008: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	    8.967	    0.104	    0.100	  0.034%	 99.268%	     2.048	        1	gpu_0/MiddleAndRPN_/conv5/FusedBatchNorm
+2018-03-20 14:33:27.667018: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	    9.074	    0.038	    0.037	  0.013%	 99.280%	     0.000	        1	gpu_0/MiddleAndRPN_/conv5/Relu
+2018-03-20 14:33:27.667028: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	    9.114	    0.042	    0.039	  0.013%	 99.293%	 18409.472	        1	gpu_0/MiddleAndRPN_/conv6/Pad
+2018-03-20 14:33:27.667037: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	    9.164	    0.136	    0.121	  0.041%	 99.335%	 37683.200	        1	gpu_0/MiddleAndRPN_/conv6/Conv2D
+2018-03-20 14:33:27.667051: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	    9.302	    0.043	    0.040	  0.014%	 99.348%	     0.000	        1	gpu_0/MiddleAndRPN_/conv6/BiasAdd
+2018-03-20 14:33:27.667061: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	    9.345	    0.099	    0.094	  0.032%	 99.380%	     2.048	        1	gpu_0/MiddleAndRPN_/conv6/FusedBatchNorm
+2018-03-20 14:33:27.667071: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	    9.446	    0.037	    0.036	  0.012%	 99.392%	     0.000	        1	gpu_0/MiddleAndRPN_/conv6/Relu
+2018-03-20 14:33:27.667081: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	    9.485	    0.043	    0.039	  0.013%	 99.405%	 18409.472	        1	gpu_0/MiddleAndRPN_/conv7/Pad
+2018-03-20 14:33:27.667090: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	    9.535	    0.143	    0.123	  0.042%	 99.447%	 37683.200	        1	gpu_0/MiddleAndRPN_/conv7/Conv2D
+2018-03-20 14:33:27.667100: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	    9.669	    0.051	    0.039	  0.013%	 99.460%	     0.000	        1	gpu_0/MiddleAndRPN_/conv7/BiasAdd
+2018-03-20 14:33:27.667109: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	    9.711	    0.094	    0.093	  0.031%	 99.492%	     2.048	        1	gpu_0/MiddleAndRPN_/conv7/FusedBatchNorm
+2018-03-20 14:33:27.667119: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	    9.811	    0.037	    0.036	  0.012%	 99.504%	     0.000	        1	gpu_0/MiddleAndRPN_/conv7/Relu
+2018-03-20 14:33:27.667129: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	    9.851	    0.036	    0.036	  0.012%	 99.516%	 18409.472	        1	gpu_0/MiddleAndRPN_/conv8/Pad
+2018-03-20 14:33:27.667139: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	    9.897	    0.018	    0.009	  0.003%	 99.519%	     0.000	        1	gpu_0/MiddleAndRPN_/Pad
+2018-03-20 14:33:27.667148: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	    9.909	    0.145	    0.134	  0.045%	 99.564%	  9654.016	        1	gpu_0/MiddleAndRPN_/conv8/Conv2D
+2018-03-20 14:33:27.667158: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	   11.336	    0.125	    0.120	  0.041%	 99.605%	 10649.600	        1	gpu_0/MiddleAndRPN_/conv11/Conv2D
+2018-03-20 14:33:27.667168: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	   11.288	    0.043	    0.039	  0.013%	 99.618%	  4700.160	        1	gpu_0/MiddleAndRPN_/conv11/Pad
+2018-03-20 14:33:27.667177: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	   11.248	    0.041	    0.037	  0.012%	 99.631%	     0.000	        1	gpu_0/MiddleAndRPN_/conv10/Relu
+2018-03-20 14:33:27.667187: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	   11.144	    0.098	    0.097	  0.033%	 99.664%	     2.048	        1	gpu_0/MiddleAndRPN_/conv10/FusedBatchNorm
+2018-03-20 14:33:27.667197: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	   11.101	    0.047	    0.040	  0.013%	 99.677%	     0.000	        1	gpu_0/MiddleAndRPN_/conv10/BiasAdd
+2018-03-20 14:33:27.667206: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	   10.971	    0.120	    0.120	  0.040%	 99.717%	 10649.600	        1	gpu_0/MiddleAndRPN_/conv10/Conv2D
+2018-03-20 14:33:27.667216: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	   10.924	    0.061	    0.038	  0.013%	 99.730%	  4700.160	        1	gpu_0/MiddleAndRPN_/conv10/Pad
+2018-03-20 14:33:27.667225: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	   10.884	    0.038	    0.037	  0.012%	 99.743%	     0.000	        1	gpu_0/MiddleAndRPN_/conv9/Relu
+2018-03-20 14:33:27.667235: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	   10.779	    0.108	    0.098	  0.033%	 99.776%	     2.048	        1	gpu_0/MiddleAndRPN_/conv9/FusedBatchNorm
+2018-03-20 14:33:27.667251: I tensorflow/core/util/stat_summarizer.cc:468] 	     Conv2DBackpropInput	   10.053	    0.133	    0.129	  0.043%	 99.820%	 75366.400	        1	gpu_0/MiddleAndRPN_/deconv1/conv2d_transpose
+2018-03-20 14:33:27.667261: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	   10.193	    0.039	    0.038	  0.013%	 99.833%	     0.000	        1	gpu_0/MiddleAndRPN_/conv8/BiasAdd
+2018-03-20 14:33:27.667271: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	   10.235	    0.041	    0.032	  0.011%	 99.843%	     0.000	        1	gpu_0/MiddleAndRPN_/deconv1/BiasAdd
+2018-03-20 14:33:27.667281: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	   10.271	    0.110	    0.102	  0.035%	 99.878%	     2.048	        1	gpu_0/MiddleAndRPN_/conv8/FusedBatchNorm
+2018-03-20 14:33:27.667290: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	   10.380	    0.100	    0.092	  0.031%	 99.909%	     4.096	        1	gpu_0/MiddleAndRPN_/deconv1/FusedBatchNorm
+2018-03-20 14:33:27.667300: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	   10.479	    0.038	    0.039	  0.013%	 99.922%	     0.000	        1	gpu_0/MiddleAndRPN_/conv8/Relu
+2018-03-20 14:33:27.667310: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	   10.521	    0.027	    0.029	  0.010%	 99.932%	     0.000	        1	gpu_0/MiddleAndRPN_/deconv1/Relu
+2018-03-20 14:33:27.667319: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	   10.554	    0.040	    0.038	  0.013%	 99.945%	  4700.160	        1	gpu_0/MiddleAndRPN_/conv9/Pad
+2018-03-20 14:33:27.667329: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	   10.600	    0.118	    0.123	  0.042%	 99.986%	 10649.600	        1	gpu_0/MiddleAndRPN_/conv9/Conv2D
+2018-03-20 14:33:27.667338: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	   10.734	    0.048	    0.041	  0.014%	100.000%	     0.000	        1	gpu_0/MiddleAndRPN_/conv9/BiasAdd
+2018-03-20 14:33:27.667348: I tensorflow/core/util/stat_summarizer.cc:468] 
+2018-03-20 14:33:27.667358: I tensorflow/core/util/stat_summarizer.cc:468] ============================== Top by Computation Time ==============================
+2018-03-20 14:33:27.667368: I tensorflow/core/util/stat_summarizer.cc:468] 	             [node type]	  [start]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+2018-03-20 14:33:27.667377: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv3D	   49.994	   12.492	   15.767	 37.326%	 37.326%	     0.000	        7	gpu_0/MiddleAndRPN_/conv1/Conv3D [Kernel]
+2018-03-20 14:33:27.667387: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	   12.720	   12.417	   12.460	  4.214%	 41.540%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/Pad [Kernel]
+2018-03-20 14:33:27.667397: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv3D	  161.303	    2.558	    4.887	 11.568%	 53.108%	     0.000	        7	gpu_0/MiddleAndRPN_/conv2/Conv3D [Kernel]
+2018-03-20 14:33:27.667406: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYDtoH	  282.190	    4.652	    4.655	  1.574%	 54.682%	     0.000	        1	edge_636_concat_104 [MemCpy]
+2018-03-20 14:33:27.667416: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv3D	  205.877	    2.579	    3.390	  8.026%	 62.708%	     0.000	        7	gpu_0/MiddleAndRPN_/conv3/Conv3D [Kernel]
+2018-03-20 14:33:27.667426: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	  151.669	    2.843	    2.843	  0.961%	 63.670%	     0.000	        1	gpu_0/MiddleAndRPN_/conv2/Pad [Kernel]
+2018-03-20 14:33:27.667435: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	  135.678	    2.843	    2.805	  0.949%	 64.619%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/BiasAdd [Kernel]
+2018-03-20 14:33:27.667445: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYHtoD	   -0.492	    2.824	    2.775	  0.939%	 65.557%	     0.000	        1	edge_633__arg_gpu_0/feature_0_1 [MemCpy]
+2018-03-20 14:33:27.667459: I tensorflow/core/util/stat_summarizer.cc:468] 	           gpu:ScatterNd	    9.661	    4.922	    2.756	  1.864%	 67.421%	     0.000	        2	gpu_0/ScatterNd [Kernel]
+2018-03-20 14:33:27.667469: I tensorflow/core/util/stat_summarizer.cc:468] 	   gpu:SquaredDifference	  139.804	    2.615	    2.631	  0.890%	 68.311%	     0.000	        1	gpu_0/MiddleAndRPN_/conv1/moments/SquaredDifference [Kernel]
+2018-03-20 14:33:27.667478: I tensorflow/core/util/stat_summarizer.cc:468] 
+2018-03-20 14:33:27.667499: I tensorflow/core/util/stat_summarizer.cc:468] ============================== Top by Memory Use ==============================
+2018-03-20 14:33:27.667518: I tensorflow/core/util/stat_summarizer.cc:468] 	             [node type]	  [start]	  [first]	 [avg ms]	     [%]	  [cdf%]	  [mem KB]	[times called]	[Name]
+2018-03-20 14:33:27.667528: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	    5.820	    0.051	    0.040	  0.014%	  0.014%	874340.352	        1	gpu_0/MiddleAndRPN_/conv1/Pad
+2018-03-20 14:33:27.667538: I tensorflow/core/util/stat_summarizer.cc:468] 	               ScatterNd	    5.743	    0.082	    0.067	  0.023%	  0.036%	720896.000	        1	gpu_0/ScatterNd
+2018-03-20 14:33:27.667548: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv3D	    6.715	    0.247	    0.213	  0.072%	  0.108%	478573.824	        1	gpu_0/MiddleAndRPN_/conv2/Conv3D
+2018-03-20 14:33:27.667557: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv3D	    7.499	    0.238	    0.208	  0.070%	  0.179%	367458.048	        1	gpu_0/MiddleAndRPN_/conv3/Conv3D
+2018-03-20 14:33:27.667567: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	    7.456	    0.041	    0.034	  0.011%	  0.190%	182154.240	        1	gpu_0/MiddleAndRPN_/conv3/Pad
+2018-03-20 14:33:27.667576: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	    6.670	    0.048	    0.035	  0.012%	  0.202%	182154.240	        1	gpu_0/MiddleAndRPN_/conv2/Pad
+2018-03-20 14:33:27.667586: I tensorflow/core/util/stat_summarizer.cc:468] 	       SquaredDifference	    6.268	    0.077	    0.040	  0.014%	  0.216%	180224.000	        1	gpu_0/MiddleAndRPN_/conv1/moments/SquaredDifference
+2018-03-20 14:33:27.667596: I tensorflow/core/util/stat_summarizer.cc:468] 	               Transpose	    8.347	    0.054	    0.041	  0.014%	  0.229%	144179.200	        1	gpu_0/MiddleAndRPN_/conv4/Conv2D-0-TransposeNHWCToNCHW-LayoutOptimizer
+2018-03-20 14:33:27.667606: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv3D	    5.868	    0.323	    0.267	  0.090%	  0.320%	1248369.408	        1	gpu_0/MiddleAndRPN_/conv1/Conv3D
+2018-03-20 14:33:27.667615: I tensorflow/core/util/stat_summarizer.cc:468] 	                ConcatV2	   15.346	    0.109	    0.098	  0.033%	  0.353%	108134.400	        1	gpu_0/MiddleAndRPN_/concat
+2018-03-20 14:33:27.667625: I tensorflow/core/util/stat_summarizer.cc:468] 
+2018-03-20 14:33:27.667634: I tensorflow/core/util/stat_summarizer.cc:468] ============================== Summary by node type ==============================
+2018-03-20 14:33:27.667644: I tensorflow/core/util/stat_summarizer.cc:468] 	             [Node type]	  [count]	  [avg ms]	    [avg %]	    [cdf %]	  [mem KB]	[times called]
+2018-03-20 14:33:27.667653: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv3D	        3	   168.310	    56.971%	    56.971%	     0.000	       21
+2018-03-20 14:33:27.667663: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Pad	       19	    20.838	     7.053%	    64.024%	     0.000	       19
+2018-03-20 14:33:27.667673: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:Conv2D	       18	    16.658	     5.639%	    69.662%	     0.000	       54
+2018-03-20 14:33:27.667682: I tensorflow/core/util/stat_summarizer.cc:468] 	      gpu:FusedBatchNorm	       21	    10.471	     3.544%	    73.207%	     0.000	       21
+2018-03-20 14:33:27.667692: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:BiasAdd	       26	     9.144	     3.095%	    76.302%	     0.000	       26
+2018-03-20 14:33:27.667706: I tensorflow/core/util/stat_summarizer.cc:468] 	 gpu:Conv2DBackpropInput	        3	     8.828	     2.988%	    79.290%	     0.000	        9
+2018-03-20 14:33:27.667716: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Relu	       25	     8.573	     2.902%	    82.192%	     0.000	       25
+2018-03-20 14:33:27.667725: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Mul	       17	     5.911	     2.001%	    84.193%	     0.000	       17
+2018-03-20 14:33:27.667735: I tensorflow/core/util/stat_summarizer.cc:468] 	           gpu:ScatterNd	        1	     5.511	     1.865%	    86.058%	     0.000	        2
+2018-03-20 14:33:27.667744: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Mean	       10	     5.474	     1.853%	    87.911%	     0.000	       20
+2018-03-20 14:33:27.667754: I tensorflow/core/util/stat_summarizer.cc:468] 	   gpu:SquaredDifference	        5	     5.431	     1.838%	    89.749%	     0.000	        5
+2018-03-20 14:33:27.667763: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Add	       10	     5.426	     1.837%	    91.586%	     0.000	       10
+2018-03-20 14:33:27.667773: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYDtoH	        7	     5.362	     1.815%	    93.401%	     0.000	        7
+2018-03-20 14:33:27.667782: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYHtoD	        6	     2.901	     0.982%	    94.383%	     0.000	        6
+2018-03-20 14:33:27.667792: I tensorflow/core/util/stat_summarizer.cc:468] 	           gpu:Transpose	        4	     2.534	     0.858%	    95.241%	     0.000	        4
+2018-03-20 14:33:27.667801: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv2D	       18	     2.263	     0.766%	    96.007%	278769.906	       18
+2018-03-20 14:33:27.667810: I tensorflow/core/util/stat_summarizer.cc:468] 	          FusedBatchNorm	       21	     1.998	     0.676%	    96.683%	    59.392	       21
+2018-03-20 14:33:27.667820: I tensorflow/core/util/stat_summarizer.cc:468] 	                 BiasAdd	       26	     0.996	     0.337%	    97.020%	     0.000	       26
+2018-03-20 14:33:27.667829: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Relu	       25	     0.851	     0.288%	    97.308%	     0.000	       25
+2018-03-20 14:33:27.667839: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Pad	       23	     0.750	     0.254%	    97.562%	1425596.375	       23
+2018-03-20 14:33:27.667848: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Conv3D	        3	     0.687	     0.233%	    97.794%	2094401.250	        3
+2018-03-20 14:33:27.667858: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Tile	        4	     0.611	     0.207%	    98.001%	     0.000	        4
+2018-03-20 14:33:27.667867: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Mean	       10	     0.596	     0.202%	    98.203%	    72.192	       10
+2018-03-20 14:33:27.667877: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Mul	       17	     0.504	     0.171%	    98.374%	     0.000	       17
+2018-03-20 14:33:27.667886: I tensorflow/core/util/stat_summarizer.cc:468] 	     Conv2DBackpropInput	        3	     0.490	     0.166%	    98.539%	236816.391	        3
+2018-03-20 14:33:27.667895: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Const	      132	     0.450	     0.152%	    98.692%	     0.000	      132
+2018-03-20 14:33:27.667905: I tensorflow/core/util/stat_summarizer.cc:468] 	            gpu:ConcatV2	        2	     0.370	     0.125%	    98.817%	     0.000	        4
+2018-03-20 14:33:27.667914: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Add	       10	     0.332	     0.112%	    98.929%	     0.000	       10
+2018-03-20 14:33:27.667924: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Max	        4	     0.279	     0.094%	    99.024%	     0.000	        4
+2018-03-20 14:33:27.667937: I tensorflow/core/util/stat_summarizer.cc:468] 	              gpu:MatMul	        2	     0.272	     0.092%	    99.116%	     0.000	        2
+2018-03-20 14:33:27.667947: I tensorflow/core/util/stat_summarizer.cc:468] 	                ConcatV2	        5	     0.260	     0.088%	    99.204%	132300.828	        5
+2018-03-20 14:33:27.667956: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Cast	        2	     0.247	     0.084%	    99.287%	     0.000	        2
+2018-03-20 14:33:27.667966: I tensorflow/core/util/stat_summarizer.cc:468] 	               Transpose	        6	     0.213	     0.072%	    99.360%	218527.750	        6
+2018-03-20 14:33:27.667975: I tensorflow/core/util/stat_summarizer.cc:468] 	       SquaredDifference	        5	     0.193	     0.065%	    99.425%	373928.969	        5
+2018-03-20 14:33:27.667985: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Max	        4	     0.189	     0.064%	    99.489%	  1812.480	        4
+2018-03-20 14:33:27.667994: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Tile	        4	     0.182	     0.062%	    99.550%	 19522.561	        4
+2018-03-20 14:33:27.668004: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Prod	        4	     0.182	     0.062%	    99.612%	     0.512	        4
+2018-03-20 14:33:27.668013: I tensorflow/core/util/stat_summarizer.cc:468] 	                     Sub	        5	     0.158	     0.053%	    99.666%	     0.000	        5
+2018-03-20 14:33:27.668023: I tensorflow/core/util/stat_summarizer.cc:468] 	                  MatMul	        2	     0.146	     0.049%	    99.715%	 13480.960	        2
+2018-03-20 14:33:27.668032: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Rsqrt	        5	     0.138	     0.047%	    99.762%	     0.000	        5
+2018-03-20 14:33:27.668042: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Squeeze	       10	     0.098	     0.033%	    99.795%	     0.000	       10
+2018-03-20 14:33:27.668051: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Cast	        2	     0.095	     0.032%	    99.827%	 24166.400	        2
+2018-03-20 14:33:27.668061: I tensorflow/core/util/stat_summarizer.cc:468] 	                  Gather	        4	     0.084	     0.028%	    99.855%	     1.024	        4
+2018-03-20 14:33:27.668070: I tensorflow/core/util/stat_summarizer.cc:468] 	               ScatterNd	        1	     0.066	     0.022%	    99.878%	720896.000	        1
+2018-03-20 14:33:27.668080: I tensorflow/core/util/stat_summarizer.cc:468] 	                NotEqual	        1	     0.064	     0.022%	    99.899%	    37.888	        1
+2018-03-20 14:33:27.668089: I tensorflow/core/util/stat_summarizer.cc:468] 	                    Pack	        2	     0.058	     0.020%	    99.919%	     0.016	        2
+2018-03-20 14:33:27.668099: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Reshape	        5	     0.048	     0.016%	    99.935%	     0.000	        5
+2018-03-20 14:33:27.668108: I tensorflow/core/util/stat_summarizer.cc:468] 	                   Shape	        2	     0.032	     0.011%	    99.946%	     0.024	        2
+2018-03-20 14:33:27.668117: I tensorflow/core/util/stat_summarizer.cc:468] 	                 Sigmoid	        1	     0.031	     0.010%	    99.957%	     0.000	        1
+2018-03-20 14:33:27.668127: I tensorflow/core/util/stat_summarizer.cc:468] 	                    NoOp	        1	     0.028	     0.009%	    99.966%	     0.000	        2
+2018-03-20 14:33:27.668136: I tensorflow/core/util/stat_summarizer.cc:468] 	                 _Retval	        2	     0.019	     0.006%	    99.973%	     0.000	        2
+2018-03-20 14:33:27.668146: I tensorflow/core/util/stat_summarizer.cc:468] 	                 gpu:Sub	        5	     0.017	     0.006%	    99.978%	     0.000	        5
+2018-03-20 14:33:27.668155: I tensorflow/core/util/stat_summarizer.cc:468] 	               gpu:Rsqrt	        5	     0.015	     0.005%	    99.983%	     0.000	        5
+2018-03-20 14:33:27.668165: I tensorflow/core/util/stat_summarizer.cc:468] 	                    _Arg	        2	     0.014	     0.005%	    99.988%	     0.000	        2
+2018-03-20 14:33:27.668178: I tensorflow/core/util/stat_summarizer.cc:468] 	                Identity	        2	     0.013	     0.004%	    99.993%	     0.000	        2
+2018-03-20 14:33:27.668188: I tensorflow/core/util/stat_summarizer.cc:468] 	                gpu:Prod	        2	     0.008	     0.003%	    99.995%	     0.000	        2
+2018-03-20 14:33:27.668197: I tensorflow/core/util/stat_summarizer.cc:468] 	             gpu:Sigmoid	        1	     0.006	     0.002%	    99.997%	     0.000	        1
+2018-03-20 14:33:27.668207: I tensorflow/core/util/stat_summarizer.cc:468] 	            gpu:NotEqual	        1	     0.005	     0.002%	    99.999%	     0.000	        1
+2018-03-20 14:33:27.668216: I tensorflow/core/util/stat_summarizer.cc:468] 	          gpu:MEMCPYDtoD	        1	     0.003	     0.001%	   100.000%	     0.000	        3
+2018-03-20 14:33:27.668225: I tensorflow/core/util/stat_summarizer.cc:468] 
+2018-03-20 14:33:27.668235: I tensorflow/core/util/stat_summarizer.cc:468] Timings (microseconds): count=34 first=294687 curr=295655 min=290803 max=298835 avg=295695 std=1666
+2018-03-20 14:33:27.668244: I tensorflow/core/util/stat_summarizer.cc:468] Memory (bytes): count=34 first=5541358400 curr=5540390976 min=5540389440 max=5541358400 avg=5.54104e+09 std=452363
+2018-03-20 14:33:27.668254: I tensorflow/core/util/stat_summarizer.cc:468] 567 nodes observed
+2018-03-20 14:33:27.668264: I tensorflow/core/util/stat_summarizer.cc:468] 
+2018-03-20 14:33:29.763290: I tensorflow/tools/benchmark/benchmark_model.cc:600] FLOPs estimate: 72.40B
+2018-03-20 14:33:29.763333: I tensorflow/tools/benchmark/benchmark_model.cc:602] FLOPs/second: 253.75B

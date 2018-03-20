@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding:UTF-8 -*-
+
 
 
 import sys
@@ -7,6 +7,8 @@ import os
 import tensorflow as tf
 import cv2
 from numba import jit
+
+import time
 
 from config import cfg
 from utils import *
@@ -70,8 +72,11 @@ class RPN3D(object):
                     tf.get_variable_scope().reuse_variables()
                     # input
                     self.vox_feature.append(feature.feature)
+                    #feature.number is not used by any other node in the tf-graph!
+                    #should not be in the code at all!
                     self.vox_number.append(feature.number)
                     self.vox_coordinate.append(feature.coordinate)
+                    
                     self.targets.append(rpn.targets)
                     self.pos_equal_one.append(rpn.pos_equal_one)
                     self.pos_equal_one_sum.append(rpn.pos_equal_one_sum)
@@ -81,8 +86,26 @@ class RPN3D(object):
                     self.neg_equal_one_sum.append(rpn.neg_equal_one_sum)
                     # output
                     feature_output = feature.outputs
+                    #These two are used in the predict step
                     delta_output = rpn.delta_output
                     prob_output = rpn.prob_output
+                    """
+                    #rpn.py
+                    r_map = ConvMD(2, 768, 14, 1, (1, 1), (0, 0),
+                           temp_conv, training=self.training, activation=False, name='conv21')
+                    self.delta_output = r_map
+
+                    #ConvMD itself contains a bunch of stuff...
+                    #M=2
+                    #Cin  = 768
+                    #Cout = 14
+                    #k    = 1
+                    #s    = (1,1)
+                    #p    = (0,0)
+                    
+                    self.prob_output = self.p_pos
+                    """                    
+
                     # loss and grad
                     self.loss = rpn.loss
                     self.reg_loss = rpn.reg_loss
@@ -263,7 +286,13 @@ class RPN3D(object):
         #     A: (N) tag
         #     B: (N, N') (class, x, y, z, h, w, l, rz, score)
         #     C; summary(optional)
-        tag = data[0]
+
+        print("predict step")
+        print("tag = ",data[0])
+        print("label = ",data[1])
+        t0 = time.time()
+        
+        tag = data[0]    
         label = data[1]
         vox_feature = data[2]
         vox_number = data[3]
@@ -282,13 +311,24 @@ class RPN3D(object):
             input_feed[self.vox_coordinate[idx]] = vox_coordinate[idx]
 
         output_feed = [self.prob_output, self.delta_output]
+        t_nxt = time.time()
+        print("Setup time = ",t_nxt-t0)
+        t0 = t_nxt
+        
         probs, deltas = session.run(output_feed, input_feed)
+        t_nxt = time.time()
+        print("session.run() time = ",t_nxt-t0)
+        t0 = t_nxt
+        
         # BOTTLENECK
         batch_boxes3d = delta_to_boxes3d(
             deltas, self.anchors, coordinate='lidar')
         batch_boxes2d = batch_boxes3d[:, :, [0, 1, 4, 5, 6]]
         batch_probs = probs.reshape(
             (len(self.avail_gpus) * self.single_batch_size, -1))
+        t_nxt = time.time()
+        print("calculate batch_probs and boxes time = ",t_nxt-t0)
+        t0 = t_nxt
         # NMS
         ret_box3d = []
         ret_score = []
