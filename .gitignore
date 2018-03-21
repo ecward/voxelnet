@@ -6,5 +6,4 @@ build/*
 utils/__pycache__/*
 *so
 data/object/*
-data/rcv_test/*
 predictions/*

@@ -7,7 +7,7 @@ import os
 import time
 import tensorflow as tf
 
-from model import RPN3D
+#from model import RPN3D
 from config import cfg
 from utils import *
 from utils.kitti_loader import iterate_data, sample_test_data
