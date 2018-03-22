@@ -17,8 +17,8 @@ cfg = __C
 
 # for dataset dir
 #__C.DATA_DIR = '/home/erik/Code/sandbox/voxelnet/data/object'
-__C.DATA_DIR = '/home/erik/Code/sandbox/voxelnet/data/rcv_test'
-__C.CALIB_DIR = '/media/erik/3tb/KITTY_DATA/3d_object_data/training/calib'
+__C.DATA_DIR = '/home/rcv/Code/voxelnet/data/rcv_test'
+__C.CALIB_DIR = '/home/rcv/Code/voxelnet/kitty_calib'
 
 # for gpu allocation
 __C.GPU_AVAILABLE = '0'

@@ -20,11 +20,12 @@ def consume():
             t0 = time.time()
             #let's pickle some numpy data...
             data = None
-
+            t    = None
             with contextlib.closing(mmap.mmap(f.fileno(),0,access=mmap.ACCESS_READ)) as m:
-                data = pickle.load(m)
+                t,data = pickle.load(m)
 
             print("read time = ",time.time()-t0)
+            print("t=",t)
             print(data)
             #sleep for 1 second
             time.sleep(1)
@@ -49,7 +50,7 @@ def produce():
         
             with contextlib.closing(mmap.mmap(f.fileno(),0,access=mmap.ACCESS_WRITE)) as m:
                 m.seek(0) #rewind
-                pickle.dump(data,m)
+                pickle.dump((t,data),m,protocol=2)
                 m.flush()
             
             #sleep for 1 second
