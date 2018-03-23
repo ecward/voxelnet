@@ -42,6 +42,11 @@ def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ, prune_voxels=False, lida
     print("using lidar_coord =",lidar_coord)
     shifted_coord = point_cloud[:, :3] + lidar_coord
 
+    #just for debug...
+    print("scene_size = ",scene_size[::-1])
+    print("min/max dims pc_shifted = ",np.min(point_cloud[:,:3],axis=0),\
+          np.max(point_cloud[:,:3],axis=0))
+
     # reverse the point cloud coordinate (X, Y, Z) -> (Z, Y, X)
     voxel_index = np.floor(
         shifted_coord[:, ::-1] / voxel_size).astype(np.int)

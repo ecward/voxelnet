@@ -37,6 +37,8 @@ BBOX_FILE       = "bbox_output.p"
 
 model_pb = "../fr00zen_opt.pb"
 
+USE_FUSED_CLOUDS = True
+
 if __name__ == "__main__":
 
     #Set up network and tf session
@@ -75,9 +77,10 @@ if __name__ == "__main__":
 
 
     #let's not set X_MIN,X_MAX = (0,70.4) but instead (-35.2,35.2)
-
-    #cfg.X_MIN = -35.2
-    #cfg.X_MAX =  35.2
+    if USE_FUSED_CLOUDS:
+        cfg.X_MIN = -35.2
+        cfg.X_MAX =  35.2
+        
     anchors = cal_anchors()    
     
     #inter-process comms.
@@ -114,13 +117,6 @@ if __name__ == "__main__":
                             print(e)
                             print("Failed to load pointcloud")
                             time.sleep(0.2)
-                        # with contextlib.closing(mmap.mmap(pc_f.fileno(),0,access=mmap.ACCESS_READ)) as m:
-                        #     try:
-                        #         idx,pcloud  = pickle.load(m,encoding='latin1')
-                        #     except Exception as e:
-                        #         print(e)
-                        #         print("Failed to load pointcloud")
-                        #         time.sleep(0.2)
 
                         if pcloud is not None: #TODO more input checking
 
@@ -140,8 +136,8 @@ if __name__ == "__main__":
 
                             #shift everything to the left,and up (grid starts at 0,0,0)
                             #also shift forward
-                            ofst = np.array([cfg.X_MAX, cfg.Y_MAX, 3], dtype=np.float32)
-                            voxel = process_pointcloud(pcloud)#,lidar_coord=ofst)
+                            ofst = np.array([-cfg.X_MIN, cfg.Y_MAX, 3], dtype=np.float32)
+                            voxel = process_pointcloud(pcloud,lidar_coord=ofst)
                             _, per_vox_feature, per_vox_number, per_vox_coordinate = build_input([voxel])
                             #convert to np.arrays..
                             per_vox_feature    = np.array([per_vox_feature])

@@ -31,6 +31,7 @@ def pc2_callback(msg):
     pc2_msg_lock.release()
 
 
+#woah, was wrong but still worked without fused clouds....
 def get_R(roll,pitch,yaw):
     cos_alph = np.cos(yaw)
     sin_alph = np.sin(yaw)
@@ -45,7 +46,7 @@ def get_R(roll,pitch,yaw):
          cos_alph*sin_beta*cos_gamma+sin_alph*sin_gamma],
         [sin_alph*cos_beta, 
          sin_alph*sin_beta*sin_gamma+cos_alph*cos_gamma,
-        sin_alph*sin_beta*cos_gamma-cos_alph-cos_alph*sin_gamma],
+        sin_alph*sin_beta*cos_gamma-cos_alph*sin_gamma],
         [-sin_beta,cos_beta*sin_gamma,cos_beta*cos_gamma]])
 
 #10 MB
@@ -55,34 +56,37 @@ FILESIZE_BBOX = 100000
 POINTCLOUD_FILE = "pc_input.p"
 BBOX_FILE       = "bbox_output.p"
 
+USE_FUSED_CLOUDS = True
+
 if __name__=="__main__":
     rospy.init_node("car_detector_ros")
 
     #comms
     pc2_msg_lock = threading.Lock()
 
-    pc2_frame = "sensor_board_link"
-    #pc2_frame = "base_link"
-    #transform pointcloud to frame, TODO, don't hard-code
-
-    #Todo listen to fused clouds
-    sub = rospy.Subscriber('/velodyne_points_right',PointCloud2,pc2_callback)
-    #sub = rospy.Subscriber('/fused_tracking_cloud',PointCloud2,pc2_callback)
-
     #z-offset is to get points at a similar height as kitty velo which is mounted about 1.7 meters up
-    
-    #From tf-echo (to sbl from velodyne_right)
-    translation = np.array([0.030, 0.426, -0.158])
-    rot = get_R(0,-0.211,-1.571)
-    z_offset = -0.5
-    
-    #translation = np.array([0.0, 0.0, -0.0])
-    #rot = get_R(0,0,0)
-    #z_offset = -1.5
 
-    
+    #transform pointcloud to frame, TODO, don't hard-code
+    if USE_FUSED_CLOUDS:
+        pc2_frame = "base_link"
+        sub = rospy.Subscriber('/fused_tracking_cloud',PointCloud2,pc2_callback)
+        translation = np.array([0.0, 0.0, 0.0])
+        rot = get_R(0,0,0)
+        z_offset = -1.5
+    else:
+        pc2_frame = "sensor_board_link"
+        sub = rospy.Subscriber('/velodyne_points_right',PointCloud2,pc2_callback)
+        translation = np.array([0.030, 0.426, -0.158])
+        rot = get_R(0,-0.211,-1.571)
+        z_offset = -0.5
+
+    print "using rot = "
+    print rot
+    print "translation = ",translation
+        
+
     #output bounding boxes
-    marker_publisher = rospy.Publisher('voxelnet_bbox', MarkerArray)
+    marker_publisher = rospy.Publisher('voxelnet_bbox', MarkerArray,queue_size=10)
     max_num_det      = 0
 
     with open(POINTCLOUD_FILE,"r+b") as pc_f:
@@ -160,9 +164,8 @@ if __name__=="__main__":
                     if idx_bbox in pc_idx_to_rostime:
                         rostime = pc_idx_to_rostime[idx_bbox]
 
-                    added_ids = []
-                    deleted_ids = []
-                    #Let's try to add a deleteall marker first...
+
+                    #add a deleteall marker first so we only show latest ones
                     bbox_marker = Marker()
                     bbox_marker.header.seq = 0 
                     bbox_marker.header.stamp = rostime
@@ -170,7 +173,7 @@ if __name__=="__main__":
                     bbox_marker.ns = 'voxelnet_bbox'
                     bbox_marker.action = Marker.DELETEALL
                     marker_arr.markers.append(bbox_marker)
-                    
+
                     for bbox in result:
                         bbox_marker = Marker()
                         bbox_marker.header.seq = 0 
@@ -178,7 +181,6 @@ if __name__=="__main__":
                         bbox_marker.header.frame_id = pc2_frame
                         bbox_marker.ns = 'voxelnet_bbox'
                         bbox_marker.id = marker_id
-                        added_ids.append(marker_id)
                         marker_id += 1                        
                         bbox_marker.type = Marker.CUBE
                         #[cls,x,y,z,h,w,l,r,prob]
@@ -205,17 +207,6 @@ if __name__=="__main__":
                         bbox_marker.color.b = 0.0
                         bbox_marker.color.a = 0.5
                         marker_arr.markers.append(bbox_marker)
-                    #push delete markers for all other ones
-                    # for i in range(marker_id,max_num_det):
-                    #     bbox_marker = Marker()
-                    #     bbox_marker.header.seq = idx_bbox
-                    #     bbox_marker.header.stamp = rostime
-                    #     bbox_marker.header.frame_id = pc2_frame
-                    #     bbox_marker.ns = 'voxelnet_bbox'
-                    #     bbox_marker.id = i
-                    #     deleted_ids.append(i)
-                    #     bbox_marker.action = Marker.DELETE
 
-                    print "added_ids = ",added_ids," deleted_ids = ",deleted_ids
                     marker_publisher.publish(marker_arr)                      
                 r.sleep()
