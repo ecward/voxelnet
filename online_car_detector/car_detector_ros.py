@@ -4,11 +4,13 @@ import rospy
 from sensor_msgs.msg import PointCloud2, PointField
 import std_msgs.msg
 import sensor_msgs.point_cloud2 as pcl2
+from visualization_msgs.msg import Marker,MarkerArray
 import threading
 import cPickle as pickle
 import numpy as np
 import mmap
 import contextlib
+import tf
 
 pc2_msg      = None
 pc2_msg_idx  = None
@@ -48,8 +50,8 @@ def get_R(roll,pitch,yaw):
 
 #10 MB
 FILESIZE_PC = 10000000
-#10 kb
-FILESIZE_BBOX = 10000
+#100 kb
+FILESIZE_BBOX = 100000
 POINTCLOUD_FILE = "pc_input.p"
 BBOX_FILE       = "bbox_output.p"
 
@@ -59,16 +61,29 @@ if __name__=="__main__":
     #comms
     pc2_msg_lock = threading.Lock()
 
-    #transform pointcloud to baselink, TODO, don't hard-code
-    
-    #From tf-echo
-    translation = np.array([0.030, 0.426, -0.158])
-    rot = get_R(0,-0.211,-1.571)
-
+    pc2_frame = "sensor_board_link"
+    #pc2_frame = "base_link"
+    #transform pointcloud to frame, TODO, don't hard-code
 
     #Todo listen to fused clouds
     sub = rospy.Subscriber('/velodyne_points_right',PointCloud2,pc2_callback)
+    #sub = rospy.Subscriber('/fused_tracking_cloud',PointCloud2,pc2_callback)
 
+    #z-offset is to get points at a similar height as kitty velo which is mounted about 1.7 meters up
+    
+    #From tf-echo (to sbl from velodyne_right)
+    translation = np.array([0.030, 0.426, -0.158])
+    rot = get_R(0,-0.211,-1.571)
+    z_offset = -0.5
+    
+    #translation = np.array([0.0, 0.0, -0.0])
+    #rot = get_R(0,0,0)
+    #z_offset = -1.5
+
+    
+    #output bounding boxes
+    marker_publisher = rospy.Publisher('voxelnet_bbox', MarkerArray)
+    max_num_det      = 0
 
     with open(POINTCLOUD_FILE,"r+b") as pc_f:
         with open(BBOX_FILE,"rb") as bbox_f:
@@ -76,8 +91,13 @@ if __name__=="__main__":
             r = rospy.Rate(10) # 10hz
 
             #let's be careful with mmap files
-            buf_pc = mmap.mmap(pc_f.fileno(),0,mmap.MAP_SHARED,mmap.PROT_WRITE)
+            buf_pc   = mmap.mmap(pc_f.fileno(),0,mmap.MAP_SHARED,mmap.PROT_WRITE)
+            buf_bbox = mmap.mmap(bbox_f.fileno(),0,mmap.MAP_SHARED,mmap.PROT_READ)
 
+
+            #maintain a mapping from pointcloud to the time it was produced!
+            pc_idx_to_rostime = {}
+            
             #main loop
             while not rospy.is_shutdown():
 
@@ -85,6 +105,7 @@ if __name__=="__main__":
                 points_idx = pc2_msg_idx
                 points = []
                 if pc2_msg is not None:
+                    pc_idx_to_rostime[points_idx] = pc2_msg.header.stamp
                     for point in pcl2.read_points(pc2_msg,skip_nans=True):
                         points.append(point)
                 pc2_msg_lock.release()
@@ -107,7 +128,7 @@ if __name__=="__main__":
 
                 #In kitty the sensor is about 0.5 higher than this, so let's remove
                 #-0.5 from z
-                points_xyzi[:,2] -= 0.5
+                points_xyzi[:,2] += z_offset
 
                 print "Dumping pointcloud with size",np.shape(points_xyzi),\
                     " idx = ",points_idx,\
@@ -117,11 +138,84 @@ if __name__=="__main__":
                 buf_pc.flush()
                 print "done!"
 
-                #with contextlib.closing(mmap.mmap(pc_f.fileno(),0,access=mmap.ACCESS_WRITE)) as m:
-                 #   m.seek(0) #rewind
-                 #   pickle.dump((points_idx,points_xyzi.flatten()),m)
-                 #   m.flush()
-                 #   print "done!"
-                #Check if we have new results.... TODO
+                #load result
+                idx_bbox = None
+                result   = None
+                try:
+                    buf_bbox.seek(0)
+                    idx_bbox,result = pickle.load(buf_bbox)
+                except Exception as e:
+                    print(e)
+                    print("Failed to load results")
 
+                if result is not None:
+                    print "results for idx = ",idx_bbox," = ",result
+
+                
+                if result is not None:
+                    max_num_det      = max(max_num_det,len(result))
+                    marker_arr = MarkerArray()
+                    marker_id  = 0
+                    rostime = rospy.get_rostime()
+                    if idx_bbox in pc_idx_to_rostime:
+                        rostime = pc_idx_to_rostime[idx_bbox]
+
+                    added_ids = []
+                    deleted_ids = []
+                    #Let's try to add a deleteall marker first...
+                    bbox_marker = Marker()
+                    bbox_marker.header.seq = 0 
+                    bbox_marker.header.stamp = rostime
+                    bbox_marker.header.frame_id = pc2_frame
+                    bbox_marker.ns = 'voxelnet_bbox'
+                    bbox_marker.action = Marker.DELETEALL
+                    marker_arr.markers.append(bbox_marker)
+                    
+                    for bbox in result:
+                        bbox_marker = Marker()
+                        bbox_marker.header.seq = 0 
+                        bbox_marker.header.stamp = rostime
+                        bbox_marker.header.frame_id = pc2_frame
+                        bbox_marker.ns = 'voxelnet_bbox'
+                        bbox_marker.id = marker_id
+                        added_ids.append(marker_id)
+                        marker_id += 1                        
+                        bbox_marker.type = Marker.CUBE
+                        #[cls,x,y,z,h,w,l,r,prob]
+                        bbox_marker.pose.position.x = float(bbox[1])
+                        bbox_marker.pose.position.y = float(bbox[2])
+                        #I don't konw why this is so wrong...
+                        bbox_marker.pose.position.z = float(bbox[3])-z_offset
+                        heading = float(bbox[7])
+                        height  = float(bbox[4])
+                        width   = float(bbox[5])
+                        length  = float(bbox[6])
+                        if height > 20 or width > 20 or length > 20:
+                            continue
+                        q = tf.transformations.quaternion_from_euler(0, 0, heading)
+                        bbox_marker.pose.orientation.x = q[0]
+                        bbox_marker.pose.orientation.y = q[1]
+                        bbox_marker.pose.orientation.z = q[2]
+                        bbox_marker.pose.orientation.w = q[3]
+                        bbox_marker.scale.x = length
+                        bbox_marker.scale.y = width
+                        bbox_marker.scale.z = height
+                        bbox_marker.color.r = 0.0
+                        bbox_marker.color.g = 1.0
+                        bbox_marker.color.b = 0.0
+                        bbox_marker.color.a = 0.5
+                        marker_arr.markers.append(bbox_marker)
+                    #push delete markers for all other ones
+                    # for i in range(marker_id,max_num_det):
+                    #     bbox_marker = Marker()
+                    #     bbox_marker.header.seq = idx_bbox
+                    #     bbox_marker.header.stamp = rostime
+                    #     bbox_marker.header.frame_id = pc2_frame
+                    #     bbox_marker.ns = 'voxelnet_bbox'
+                    #     bbox_marker.id = i
+                    #     deleted_ids.append(i)
+                    #     bbox_marker.action = Marker.DELETE
+
+                    print "added_ids = ",added_ids," deleted_ids = ",deleted_ids
+                    marker_publisher.publish(marker_arr)                      
                 r.sleep()

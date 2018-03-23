@@ -14,7 +14,7 @@ from config import cfg
 
 data_dir = 'velodyne'
 
-def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ, prune_voxels=False):
+def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ, prune_voxels=False, lidar_coord=None):
     #Reduce the number of voxels that are input to network....
     
     # Input:
@@ -25,20 +25,23 @@ def process_pointcloud(point_cloud, cls=cfg.DETECT_OBJ, prune_voxels=False):
         scene_size = np.array([4, 80, 70.4], dtype=np.float32)
         voxel_size = np.array([0.4, 0.2, 0.2], dtype=np.float32)
         grid_size = np.array([10, 400, 352], dtype=np.int64)
-        lidar_coord = np.array([0, 40, 3], dtype=np.float32)
+        if lidar_coord is None:
+            lidar_coord = np.array([0, 40, 3], dtype=np.float32)
         #max_point_number = 35
         max_point_number = 20 #Made this smaller 
     else:
         scene_size = np.array([4, 40, 48], dtype=np.float32)
         voxel_size = np.array([0.4, 0.2, 0.2], dtype=np.float32)
         grid_size = np.array([10, 200, 240], dtype=np.int64)
-        lidar_coord = np.array([0, 20, 3], dtype=np.float32)
+        if lidar_coord is None:
+            lidar_coord = np.array([0, 20, 3], dtype=np.float32)
         max_point_number = 45
 
     np.random.shuffle(point_cloud)
 
-    #Why is this done?
+    print("using lidar_coord =",lidar_coord)
     shifted_coord = point_cloud[:, :3] + lidar_coord
+
     # reverse the point cloud coordinate (X, Y, Z) -> (Z, Y, X)
     voxel_index = np.floor(
         shifted_coord[:, ::-1] / voxel_size).astype(np.int)
